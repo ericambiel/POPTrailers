@@ -3,11 +3,28 @@
     package="ericambiel.com.br.smartimdb">
 
     <dist:module dist:instant="true" />
+
+
+
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" />
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".FilmeActivity">
+            <intent-filter>
+                <!-- Indica que essa sera a primeira Activity a ser exibida ao entrar no APP -->
+                <action android:name="android.intent.action.MAIN" />
+                <!-- Indica que o icone do app ficara disponivel na tela principal-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+
+    <!-- Declaramos aqui todas as activites que rodaram no projeto alem de opções de acesso a rede -->
 </manifest>

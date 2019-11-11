@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">smartIMDB</string>
+    <string name="hello_word">Hello Word</string>
 </resources>

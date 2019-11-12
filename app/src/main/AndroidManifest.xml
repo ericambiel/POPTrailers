@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".FilmeActivity">
+        <activity android:name=".ui.listafilmes.ListaFilmeActivity">
             <intent-filter>
                 <!-- Indica que essa sera a primeira Activity a ser exibida ao entrar no APP -->
                 <action android:name="android.intent.action.MAIN" />

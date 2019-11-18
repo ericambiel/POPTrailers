@@ -1,9 +1,9 @@
 package ericambiel.com.br.smartimdb.data.model;
 
-public class filme {
+public class Filme {
     private final String nome;
 
-    public filme(String nome) {
+    public Filme(String nome) {
         this.nome = nome;
     }
 

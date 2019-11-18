@@ -8,7 +8,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Arrays;
+import java.util.List;
+
 import ericambiel.com.br.smartimdb.R;
+import ericambiel.com.br.smartimdb.data.model.Filme;
 
 //Diferente da Activity a AppCompatActivity cria um mesmo
 // padrão de layout para diferentes versões do android
@@ -24,8 +28,17 @@ public class ListaFilmeActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recycler_filmes);
 
-        recyclerView.LayoutManager liLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager liLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(liLayoutManager);
-        recyclerView.setAdapter();
+        recyclerView.setAdapter(new ListaFilmesAdapter(criaFilmes()));
+    }
+
+    private List<Filme> criaFilmes() {
+        return Arrays.asList(
+                new Filme("Coração de Ferro"),
+                new Filme("Coração de Ferro"),
+                new Filme("Coração de Ferro"),
+                new Filme("Coração de Ferro")
+        );
     }
 }

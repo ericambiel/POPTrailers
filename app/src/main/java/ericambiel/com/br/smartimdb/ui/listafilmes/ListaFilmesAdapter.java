@@ -3,7 +3,6 @@ package ericambiel.com.br.smartimdb.ui.listafilmes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ericambiel.com.br.smartimdb.R;
-import ericambiel.com.br.smartimdb.data.model.Filme;
+import ericambiel.com.br.smartimdb.data.network.response.FilmesPopularesResponse;
 
-public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesAdapter.ListaFilmesViewHolder> {
+public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesViewHolder> {
 
-    private List<Filme> filmes;
+    private List<FilmesPopularesResponse> filmes;
 
-    public ListaFilmesAdapter(List<Filme> filmes) {
+    ListaFilmesAdapter(List<FilmesPopularesResponse> filmes) {
         this.filmes = filmes;
     }
 
@@ -32,27 +31,15 @@ public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesAdapter.
         return new ListaFilmesViewHolder(view);
     }
 
+    //É invocado toda vez que um rv precisa ser renderizado na tela.
     @Override
     public void onBindViewHolder(@NonNull ListaFilmesViewHolder holder, int position) {
-        holder.textTituloFilme.setText(filmes.get(position).getNome());
+        holder.textTituloFilme.setText(filmes.get(position).getTituloOriginal());
     }
 
-    //Retrona o tamnaho da lista dentro de um ViewHolder, a quantidade de dados a ser carregado
+    //Retorna o tamanho da lista dentro de um ViewHolder, a quantidade de dados a ser carregado
     @Override
     public int getItemCount() {
         return (filmes != null && filmes.size() > 0) ? filmes.size() : 0;
-    }
-
-    static class ListaFilmesViewHolder extends RecyclerView.ViewHolder{
-
-        TextView textTituloFilme;
-
-        public ListaFilmesViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            textTituloFilme = itemView.findViewById(R.id.text_titulo_filme);
-
-            textTituloFilme.setText("Filme de Exemplo");
-        }
     }
 }

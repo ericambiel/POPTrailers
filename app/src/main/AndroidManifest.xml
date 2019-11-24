@@ -4,7 +4,8 @@
 
     <dist:module dist:instant="true" />
 
-
+    <!-- Permite acesso a internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="false"

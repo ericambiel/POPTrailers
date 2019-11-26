@@ -11,7 +11,7 @@ import java.util.List;
  *
  * verificar: https://developers.themoviedb.org/3/movies/get-popular-movies
  */
-public class FilmesPopularesResponse {
+public class FilmePopularesResponse {
     @Json(name = "poster_path")
     private final String caminhoPoster;
 
@@ -54,10 +54,10 @@ public class FilmesPopularesResponse {
     @Json(name = "vote_average")
     private final double estrelas;
 
-    public FilmesPopularesResponse(String caminhoPoster, Boolean adulto, String sinopse, String dataLancamento,
-                                   List<Integer> idsGenero, int id, String tituloOriginal, String linguaOriginal,
-                                   String titulo, String planoFundo, double popularidade, int contagemVotos,
-                                   double estrelas) {
+    public FilmePopularesResponse(String caminhoPoster, Boolean adulto, String sinopse, String dataLancamento,
+                                  List<Integer> idsGenero, int id, String tituloOriginal, String linguaOriginal,
+                                  String titulo, String planoFundo, double popularidade, int contagemVotos,
+                                  double estrelas) {
         this.caminhoPoster = caminhoPoster;
         this.adulto = adulto;
         this.sinopse = sinopse;
@@ -72,7 +72,6 @@ public class FilmesPopularesResponse {
         this.contagemVotos = contagemVotos;
         this.estrelas = estrelas;
     }
-
 
     public String getCaminhoPoster() {
         return caminhoPoster;

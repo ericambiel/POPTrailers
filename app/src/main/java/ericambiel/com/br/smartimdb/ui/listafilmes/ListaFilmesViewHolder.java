@@ -1,22 +1,36 @@
 package ericambiel.com.br.smartimdb.ui.listafilmes;
 
+
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ericambiel.com.br.smartimdb.R;
+import com.squareup.picasso.Picasso;
 
-//Classe com contem conteudo do RV
+import ericambiel.com.br.smartimdb.R;
+import ericambiel.com.br.smartimdb.data.model.Filme;
+
+//Classe contem conteudo do RV
 class ListaFilmesViewHolder extends RecyclerView.ViewHolder{
 
-    TextView textTituloFilme;
-    public ListaFilmesViewHolder(@NonNull View itemView) {
+    public AppCompatTextView textTituloFilme;
+    public AppCompatImageView imagePoster;
+
+    ListaFilmesViewHolder(@NonNull View itemView) {
         super(itemView);
 
         textTituloFilme = itemView.findViewById(R.id.text_titulo_filme);
+        imagePoster = itemView.findViewById(R.id.image_poster_filme);
 
-        textTituloFilme.setText("Filme de Exemplo");
+    }
+
+    public void bind(Filme filme){
+        textTituloFilme.setText(filme.getTituloOriginal());
+
+        //Baixa a imagem e mostra em um componente imageView
+        Picasso.get().load("https://image.tmdb.org/t/p/w342/" + filme.getCaminhoPoster()).into(imagePoster);
     }
 }

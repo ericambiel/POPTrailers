@@ -1,13 +1,19 @@
 package ericambiel.com.br.smartimdb.data.model;
 
 public class Filme {
-    private final String nome;
+    private final String tituloOriginal;
+    private final String caminhoPoster;
 
-    public Filme(String nome) {
-        this.nome = nome;
+    public Filme(String tituloOriginal, String caminhoPoster) {
+        this.tituloOriginal = tituloOriginal;
+        this.caminhoPoster = caminhoPoster;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTituloOriginal() {
+        return tituloOriginal;
+    }
+
+    public String getCaminhoPoster() {
+        return caminhoPoster;
     }
 }

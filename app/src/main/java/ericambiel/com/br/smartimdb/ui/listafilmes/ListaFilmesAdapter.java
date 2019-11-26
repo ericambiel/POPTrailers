@@ -7,17 +7,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ericambiel.com.br.smartimdb.R;
-import ericambiel.com.br.smartimdb.data.network.response.FilmesPopularesResponse;
+import ericambiel.com.br.smartimdb.data.model.Filme;
 
 public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesViewHolder> {
 
-    private List<FilmesPopularesResponse> filmes;
+    private List<Filme> listFilmes;
 
-    ListaFilmesAdapter(List<FilmesPopularesResponse> filmes) {
-        this.filmes = filmes;
+    public ListaFilmesAdapter() {
+        listFilmes = new ArrayList<>();
     }
 
     @NonNull
@@ -34,12 +35,19 @@ public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesViewHold
     //É invocado toda vez que um rv precisa ser renderizado na tela.
     @Override
     public void onBindViewHolder(@NonNull ListaFilmesViewHolder holder, int position) {
-        holder.textTituloFilme.setText(filmes.get(position).getTituloOriginal());
+        holder.bind(listFilmes.get(position));
     }
 
     //Retorna o tamanho da lista dentro de um ViewHolder, a quantidade de dados a ser carregado
     @Override
     public int getItemCount() {
-        return (filmes != null && filmes.size() > 0) ? filmes.size() : 0;
+        return (listFilmes != null && listFilmes.size() > 0) ? listFilmes.size() : 0;
     }
+
+    public void setFilmes(List<Filme> filmeList){
+        this.listFilmes = filmeList;
+        notifyDataSetChanged(); //Faz o binding de cada item pra cada posição e exibi para o usuário
+    }
+
+
 }

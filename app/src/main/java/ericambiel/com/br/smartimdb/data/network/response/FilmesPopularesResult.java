@@ -16,7 +16,7 @@ public class FilmesPopularesResult {
     private final int pagina; // Se nome da variavel igual ao do Json não é necessário @Json
 
     @Json(name = "results")
-    private final List<FilmesPopularesResponse> resultadosFilmes;
+    private final List<FilmePopularesResponse> resultadosFilmes;
 
     @Json(name = "total_results")
     private final int totalResultados;
@@ -24,7 +24,7 @@ public class FilmesPopularesResult {
     @Json(name = "total_pages")
     private final int toralPaginas;
 
-    public FilmesPopularesResult(int pagina, List<FilmesPopularesResponse> resultadosFilmes, int totalResultados, int toralPaginas) {
+    public FilmesPopularesResult(int pagina, List<FilmePopularesResponse> resultadosFilmes, int totalResultados, int toralPaginas) {
         this.pagina = pagina;
         this.resultadosFilmes = resultadosFilmes;
         this.totalResultados = totalResultados;
@@ -35,7 +35,7 @@ public class FilmesPopularesResult {
         return pagina;
     }
 
-    public List<FilmesPopularesResponse> getResultadosFilmes() {
+    public List<FilmePopularesResponse> getResultadosFilmes() {
         return resultadosFilmes;
     }
 

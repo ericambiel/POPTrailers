@@ -14,20 +14,34 @@ import ericambiel.com.br.smartimdb.R;
 import ericambiel.com.br.smartimdb.data.model.Filme;
 
 //Classe contem conteudo do RV
-class ListaFilmesViewHolder extends RecyclerView.ViewHolder{
+class HolderFilmesPopulares extends RecyclerView.ViewHolder{
 
-    public AppCompatTextView textTituloFilme;
-    public AppCompatImageView imagePoster;
+    private AppCompatTextView textTituloFilme;
+    private AppCompatImageView imagePoster;
+    private Filme filme;
 
-    ListaFilmesViewHolder(@NonNull View itemView) {
+    HolderFilmesPopulares(@NonNull View itemView, final AdapterFilmesPopulares.ItemFilmeClickListener itemFilmeClickListener) {
         super(itemView);
 
         textTituloFilme = itemView.findViewById(R.id.text_titulo_filme);
         imagePoster = itemView.findViewById(R.id.image_poster_filme);
 
+        //Dispara esse metodo a cada click do filme escolhido
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Se estiver instânciado no Adapter
+                if (itemFilmeClickListener != null) {
+                    //Devolve filme clicado
+                    itemFilmeClickListener.onClickItemFilme(filme);
+                }
+            }
+        });
     }
 
     public void bind(Filme filme){
+        this.filme = filme;
+
         textTituloFilme.setText(filme.getTituloOriginal());
 
         //Baixa a imagem e mostra em um componente imageView

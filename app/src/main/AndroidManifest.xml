@@ -1,10 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="ericambiel.com.br.smartimdb">
 
-    <dist:module dist:instant="true" />
-
-    <!-- Permite acesso a internet -->
+    <dist:module dist:instant="true" /> <!-- Permite acesso a internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,18 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ui.listafilmes.ListaFilmeActivity">
+        <activity android:name=".ui.detalhesfilme.DetalhesFilmeActivity"></activity>
+        <activity android:name=".ui.listafilmes.ActivityFilmesPopulares">
             <intent-filter>
+
                 <!-- Indica que essa sera a primeira Activity a ser exibida ao entrar no APP -->
                 <action android:name="android.intent.action.MAIN" />
-                <!-- Indica que o icone do app ficara disponivel na tela principal-->
+                <!-- Indica que o icone do app ficara disponivel na tela principal -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
-    <!-- Declaramos aqui todas as activites que rodaram no projeto alem de opções de acesso a rede -->
 </manifest>

@@ -1,6 +1,10 @@
 package ericambiel.com.br.smartimdb.data.model;
 
-public class Filme {
+import java.io.Serializable;
+
+/*Implementa Serializable para que possa possa ser entregue a outra Activity que diferente da
+ implementada, muito utilizado quando iremos passar dados(objeto) de uma activity para outra.*/
+public class Filme implements Serializable {
     private final String tituloOriginal;
     private final String caminhoPoster;
 

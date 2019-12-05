@@ -97,11 +97,9 @@ public class ActivityFilmesPopulares extends AppCompatActivity
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.recycler_filmes, new YoutubeFragment())
-               // .replace(R.id.youtube_fragment_layout, youtubeFragment)
+                .add(R.id.youtube_fragment_layout, new YoutubeFragment())
                 .addToBackStack("YOUTUBE_PLAYER")
                 .commit();
-
     }
 
     private void configuraToolBar(){

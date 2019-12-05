@@ -18,7 +18,7 @@ private const val TAG = "MAIN_ACTIVITY"
 class YoutubeFragment : Fragment() {
 
     var mOnInitializerListerner: YouTubePlayer.OnInitializedListener? = null
-    private lateinit var youTubePlayerFragmentX: YouTubePlayerFragmentX
+    private var youTubePlayerFragmentX: YouTubePlayerFragmentX = YouTubePlayerFragmentX()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

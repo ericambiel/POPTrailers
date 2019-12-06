@@ -7,10 +7,12 @@ import java.io.Serializable;
 public class Filme implements Serializable {
     private final String tituloOriginal;
     private final String caminhoPoster;
+    //private final String trailer;
 
     public Filme(String tituloOriginal, String caminhoPoster) {
         this.tituloOriginal = tituloOriginal;
         this.caminhoPoster = caminhoPoster;
+    //    this.trailer = trailer;
     }
 
     public String getTituloOriginal() {

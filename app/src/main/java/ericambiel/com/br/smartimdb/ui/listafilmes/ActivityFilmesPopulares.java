@@ -37,30 +37,6 @@ public class ActivityFilmesPopulares extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        setContentView(R.layout.fragment_youtube);
-//
-//        youTubePlayerFragmentX = (YouTubePlayerFragmentX) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
-//
-//        mOnInitializerListerner = new YouTubePlayer.OnInitializedListener(){
-//            @Override
-//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
-//                if(wasRestored) {
-//                    youTubePlayer.play();
-//                } else {
-//                    //youTubePlayer.cueVideo("pRj8x8M2iAI"); //Espera dar Play.
-//                    youTubePlayer.loadVideo("pRj8x8M2iAI"); //Chama video direto.
-//                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
-//                }
-//            }
-//
-//            @Override
-//            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-//                Log.d(TAG, "Failed to initialize");
-//            }
-//        };
-//
-//        youTubePlayerFragmentX.initialize("AIzaSyBwSvhhXHE_UBMHiI0kODGE5g5A6jG8jew", mOnInitializerListerner);
-
         setContentView(R.layout.activity_lista_filme);
         configuraToolBar();
         configuraAdapter();
@@ -87,19 +63,21 @@ public class ActivityFilmesPopulares extends AppCompatActivity
 
     @Override
     public void onClickItemFilme(Filme filme) {
-//        //Objeto necessário para iniciar outra activity.
-//        Intent intent = new Intent(this, DetalhesFilmeActivity.class);
-//        /* Passa dados para proxima tela pelo nome da Activity informado, no caso Filme implementa
-//           classe Serializable para que possa ser enviado diretamente. */
-//        intent.putExtra(DetalhesFilmeActivity.TAG, filme);
-//        //Inicia outra Activity com o Intent criado.
-//        startActivity(intent);
 
+        String trailer = filme.getTrailer();
+        iniciaYoutubePlayer("XkeIwhKIi84"); //Daft Punk Feat Pharrel Williams - Get Lucky (Album Version Video)
+    }
+
+    private void iniciaYoutubePlayer(String video) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.youtube_fragment_layout, new YoutubeFragment())
+                .add(R.id.youtube_fragment_layout, new YoutubeFragment(video))
                 .addToBackStack("YOUTUBE_PLAYER")
                 .commit();
+    }
+
+    private void sendArgumentPresenter() {
+
     }
 
     private void configuraToolBar(){

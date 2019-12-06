@@ -11,29 +11,29 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerFragmentX
 import ericambiel.com.br.smartimdb.R
+import ericambiel.com.br.smartimdb.config.Keys
 
 
 private const val TAG = "MAIN_ACTIVITY"
 
-class YoutubeFragment : Fragment() {
+class YoutubeFragment(private var video: String) : Fragment() {
 
-    var mOnInitializerListerner: YouTubePlayer.OnInitializedListener? = null
-    private var youTubePlayerFragmentX: YouTubePlayerFragmentX = YouTubePlayerFragmentX()
+    private lateinit var mOnInitializerListerner: YouTubePlayer.OnInitializedListener
+    private lateinit var youTubePlayerFragmentX: YouTubePlayerFragmentX
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_youtube, container, false)
 
         val transaction: FragmentTransaction = childFragmentManager.beginTransaction()
-        transaction.add(R.id.youtube_fragment_layout, youTubePlayerFragmentX).commit()
 
+        youTubePlayerFragmentX = YouTubePlayerFragmentX()
         mOnInitializerListerner = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(provider: YouTubePlayer.Provider, youTubePlayer: YouTubePlayer, wasRestored: Boolean) {
                 if (wasRestored) {
                     youTubePlayer.play()
                 } else {
                     //youTubePlayer.cueVideo("pRj8x8M2iAI") //Espera dar Play.
-                    youTubePlayer.loadVideo("pRj8x8M2iAI") //Chama video direto.
+                    youTubePlayer.loadVideo(video) //Chama video direto.
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL)
                 }
             }
@@ -43,10 +43,12 @@ class YoutubeFragment : Fragment() {
             }
         }
 
-        youTubePlayerFragmentX.initialize("AIzaSyBwSvhhXHE_UBMHiI0kODGE5g5A6jG8jew", mOnInitializerListerner)
+        youTubePlayerFragmentX.initialize(Keys.key_YouTube, mOnInitializerListerner)
 
+        // Inicia transação entre Activity e Fragment
+        transaction.add(R.id.youtube_fragment_layout, youTubePlayerFragmentX).commit()
 
         // Inflate the layout for this fragment
-        return view
+        return inflater.inflate(R.layout.fragment_youtube, container, false)
     }
 }

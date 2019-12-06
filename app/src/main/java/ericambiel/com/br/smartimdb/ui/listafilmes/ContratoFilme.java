@@ -42,14 +42,13 @@ public interface ContratoFilme {
 
     interface PresenterFilmesPopulares extends Presenter {
         /**
-         * Atribui valores e parametro a view.
-         * @param viewFilmesPopulares
-         */
-        void setViewFilmesPopulares(ViewFilmesPopulares viewFilmesPopulares);
-
-        /**
          * Obtem filmes da API TMDB.
          */
         void obtemFilmes();
+
+        /**
+         * Obtem Videos de Filmes como treiles e teasers
+         */
+        void obterVideosFilmes();
     }
 }

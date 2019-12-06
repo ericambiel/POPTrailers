@@ -1,5 +1,6 @@
 package ericambiel.com.br.smartimdb.data.network;
 
+import ericambiel.com.br.smartimdb.config.Keys;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
@@ -12,7 +13,7 @@ public class RetrofitApiService {
     public static TMDBFilmeService getInstance() {
         if (_INSTANCE == null) {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://api.themoviedb.org/3/")
+                    .baseUrl(Keys.baseURL_TMDB)
                     .addConverterFactory(MoshiConverterFactory.create())
                     .build();
 

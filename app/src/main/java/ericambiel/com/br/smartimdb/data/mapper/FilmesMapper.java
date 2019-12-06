@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ericambiel.com.br.smartimdb.data.model.Filme;
-import ericambiel.com.br.smartimdb.data.network.response.FilmePopularesResponse;
+import ericambiel.com.br.smartimdb.data.network.responseTMDB.FilmePopularesResponse;
 
 public class FilmesMapper {
     /**

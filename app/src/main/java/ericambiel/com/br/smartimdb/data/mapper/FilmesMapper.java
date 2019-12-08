@@ -9,18 +9,19 @@ import ericambiel.com.br.smartimdb.data.network.responseTMDB.FilmePopularesRespo
 public class FilmesMapper {
     /**
      * Converte uma lista de filmes Response em uma lista de filmes desacoplando
-     * camada de domínio e network
-     * @param listFilmeResponse
-     * @return
+     * camada de dom&iacute;nio e network
+     * @param listFilmeResponse Lista com filmes mapeados entre Model e endPoint
+     * @return Lista de filmes trazidos pelo endPoint
      */
     public static List<Filme> responseToDomain(List<FilmePopularesResponse> listFilmeResponse){
         List<Filme> filmesList = new ArrayList<>();
 
         for (FilmePopularesResponse filmeResponse : listFilmeResponse){
-            final  Filme filme = new Filme(filmeResponse.getTituloOriginal(), filmeResponse.getCaminhoPoster());
+            final  Filme filme = new Filme(
+                    filmeResponse.getTituloOriginal(),
+                    filmeResponse.getCaminhoPoster());
             filmesList.add(filme);
         }
-
         return filmesList;
     }
 }

@@ -22,7 +22,9 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
         //Recebe o objeto Filme de outra Activity via serializable
         final Filme filme = (Filme)getIntent().getSerializableExtra(TAG);
 
+        //Evita NullPoiterException
+        assert filme != null;
         //Seta titulo da Actvity com o nome do Filme escolhido
-        textTituloFilme.setText(filme.getTituloOriginal());
+        textTituloFilme.setText(filme.getTituloOriginalFilme());
     }
 }

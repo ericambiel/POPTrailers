@@ -9,7 +9,7 @@ import com.squareup.moshi.Json;
  *
  * verificar: https://developers.themoviedb.org/3/movies/get-movie-videos
  */
-public class VideosFilmesResponse {
+public class VideoFilmeResponse {
     @Json(name = "id")
     private final String idVideo;
 
@@ -20,7 +20,7 @@ public class VideosFilmesResponse {
     private final String linguaVideo;
 
     /**
-     * Pais do video "BR"
+     * Pa&iacute;s do video "BR"
      */
     @Json(name = "iso_3166_1")
     private final String paisVideo;
@@ -34,17 +34,17 @@ public class VideosFilmesResponse {
 
     /**
      * Nome do video cadastrado no TMDB (pode ser diferente da fonte)
-     * ex: "Fight Club | #TBT Trailer | 20th Century FOX"
+     * ex: "Fight Club | 20th Century FOX"
      */
     @Json(name = "name")
-    private final String nomeVideo;
+    private final String tituloVideo;
 
     /**
      * Site onde Video esta ospedados
      * ex: YouTube, Vimeo
      */
     @Json(name = "site")
-    private final String siteVideo;
+    private final String fonteVideo;
 
     /**
      * Resolução do video
@@ -60,20 +60,20 @@ public class VideosFilmesResponse {
     @Json(name = "type")
     private final int tipoVideo;
 
-    public VideosFilmesResponse(String idVideo,
-                                String linguaVideo,
-                                String paisVideo,
-                                String keyVideo,
-                                String nomeVideo,
-                                String siteVideo,
-                                int resolucaoVideo,
-                                int tipoVideo) {
+    public VideoFilmeResponse(String idVideo,
+                              String linguaVideo,
+                              String paisVideo,
+                              String keyVideo,
+                              String tituloVideo,
+                              String fonteVideo,
+                              int resolucaoVideo,
+                              int tipoVideo) {
         this.idVideo = idVideo;
         this.linguaVideo = linguaVideo;
         this.paisVideo = paisVideo;
         this.keyVideo = keyVideo;
-        this.nomeVideo = nomeVideo;
-        this.siteVideo = siteVideo;
+        this.tituloVideo = tituloVideo;
+        this.fonteVideo = fonteVideo;
         this.resolucaoVideo = resolucaoVideo;
         this.tipoVideo = tipoVideo;
     }
@@ -94,12 +94,12 @@ public class VideosFilmesResponse {
         return keyVideo;
     }
 
-    public String getNomeVideo() {
-        return nomeVideo;
+    public String getTituloVideo() {
+        return tituloVideo;
     }
 
-    public String getSiteVideo() {
-        return siteVideo;
+    public String getFonteVideo() {
+        return fonteVideo;
     }
 
     public int getResolucaoVideo() {

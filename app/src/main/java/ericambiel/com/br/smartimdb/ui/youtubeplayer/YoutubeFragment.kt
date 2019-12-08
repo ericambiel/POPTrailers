@@ -13,9 +13,6 @@ import com.google.android.youtube.player.YouTubePlayerFragmentX
 import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.config.Keys
 
-
-private const val TAG = "MAIN_ACTIVITY"
-
 class YoutubeFragment(private var video: String) : Fragment() {
 
     private lateinit var mOnInitializerListerner: YouTubePlayer.OnInitializedListener
@@ -50,5 +47,10 @@ class YoutubeFragment(private var video: String) : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_youtube, container, false)
+    }
+
+    //Constantes
+    companion object {
+        private const val TAG = "MAIN_ACTIVITY"
     }
 }

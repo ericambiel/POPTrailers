@@ -9,7 +9,7 @@ import com.squareup.moshi.Json;
  *
  * verificar: https://developers.themoviedb.org/3/movies/get-movie-videos
  */
-public class VideoFilmeResponse {
+public class VideoResponse {
     @Json(name = "id")
     private final String idVideo;
 
@@ -60,14 +60,14 @@ public class VideoFilmeResponse {
     @Json(name = "type")
     private final int tipoVideo;
 
-    public VideoFilmeResponse(String idVideo,
-                              String linguaVideo,
-                              String paisVideo,
-                              String keyVideo,
-                              String tituloVideo,
-                              String fonteVideo,
-                              int resolucaoVideo,
-                              int tipoVideo) {
+    public VideoResponse(String idVideo,
+                         String linguaVideo,
+                         String paisVideo,
+                         String keyVideo,
+                         String tituloVideo,
+                         String fonteVideo,
+                         int resolucaoVideo,
+                         int tipoVideo) {
         this.idVideo = idVideo;
         this.linguaVideo = linguaVideo;
         this.paisVideo = paisVideo;

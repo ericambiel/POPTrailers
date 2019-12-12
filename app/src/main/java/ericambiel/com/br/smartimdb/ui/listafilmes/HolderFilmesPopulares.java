@@ -20,7 +20,8 @@ class HolderFilmesPopulares extends RecyclerView.ViewHolder{
     private AppCompatImageView imagePoster;
     private Filme filme;
 
-    HolderFilmesPopulares(@NonNull View itemView, final AdapterFilmesPopulares.ItemFilmeClickListener itemFilmeClickListener) {
+    HolderFilmesPopulares(@NonNull View itemView,
+                          final AdapterFilmesPopulares.ItemFilmeClickListener itemFilmeClickListener) {
         super(itemView);
 
         textTituloFilme = itemView.findViewById(R.id.text_titulo_filme);

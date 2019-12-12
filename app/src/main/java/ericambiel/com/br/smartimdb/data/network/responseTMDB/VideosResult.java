@@ -11,7 +11,7 @@ import java.util.List;
  *
  * verificar: https://developers.themoviedb.org/3/movies/get-movie-videos
  */
-public class VideosFilmeResult {
+public class VideosResult {
     /**
      * Id do video no TMDB, mesmo usado no endPoint para buscar video
      */
@@ -22,9 +22,10 @@ public class VideosFilmeResult {
      * Lista com resultados da pesquisa
      */
     @Json(name = "results")
-    private final List<VideoFilmeResponse> resultadosVideos;
+    private final List<VideoResponse> resultadosVideos;
 
-    public VideosFilmeResult(int id, List<VideoFilmeResponse> resultadosVideos) {
+    public VideosResult(int id,
+                        List<VideoResponse> resultadosVideos) {
         this.id = id;
         this.resultadosVideos = resultadosVideos;
     }
@@ -33,7 +34,7 @@ public class VideosFilmeResult {
         return id;
     }
 
-    public List<VideoFilmeResponse> getResultadosVideos() {
+    public List<VideoResponse> getResultadosVideos() {
         return resultadosVideos;
     }
 }

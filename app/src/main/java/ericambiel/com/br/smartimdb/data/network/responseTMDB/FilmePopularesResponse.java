@@ -27,6 +27,10 @@ public class FilmePopularesResponse {
     @Json(name = "genre_ids")
     private final List<Integer> idsGenero;
 
+    /**
+     * Id do filme, pode ser usados em outros
+     * endPoints como a chamada de um trailer
+     */
     @Json(name = "id")
     private final int id;
 
@@ -54,9 +58,18 @@ public class FilmePopularesResponse {
     @Json(name = "vote_average")
     private final double estrelas;
 
-    public FilmePopularesResponse(String caminhoPoster, Boolean adulto, String sinopse, String dataLancamento,
-                                  List<Integer> idsGenero, int id, String tituloOriginal, String linguaOriginal,
-                                  String titulo, String planoFundo, double popularidade, int contagemVotos,
+    public FilmePopularesResponse(String caminhoPoster,
+                                  Boolean adulto,
+                                  String sinopse,
+                                  String dataLancamento,
+                                  List<Integer> idsGenero,
+                                  int id,
+                                  String tituloOriginal,
+                                  String linguaOriginal,
+                                  String titulo,
+                                  String planoFundo,
+                                  double popularidade,
+                                  int contagemVotos,
                                   double estrelas) {
         this.caminhoPoster = caminhoPoster;
         this.adulto = adulto;

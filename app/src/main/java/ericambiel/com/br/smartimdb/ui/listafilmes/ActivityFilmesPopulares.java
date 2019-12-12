@@ -16,6 +16,7 @@ import java.util.List;
 
 import ericambiel.com.br.smartimdb.R;
 import ericambiel.com.br.smartimdb.data.model.Filme;
+import ericambiel.com.br.smartimdb.data.model.Video;
 import ericambiel.com.br.smartimdb.ui.youtubeplayer.YoutubeFragment;
 
 // Diferente da Activity a AppCompatActivity cria um mesmo
@@ -41,7 +42,7 @@ public class ActivityFilmesPopulares extends AppCompatActivity
         configuraToolBar();
         configuraAdapter();
         presenterFilmesPopulares = new PresenterFilmesPopulares(this);
-        presenterFilmesPopulares.obtemFilmes();
+        presenterFilmesPopulares.obtemFilmesPopulares();
     }
 
     @Override
@@ -58,26 +59,23 @@ public class ActivityFilmesPopulares extends AppCompatActivity
 
     @Override
     public void mostraErro(){
-        Toast.makeText(this, "Erro ao obter lista de filmes.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Erro ao carregar objeto.", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onClickItemFilme(Filme filme) {
+        presenterFilmesPopulares.obtemVideos(filme);
+        //String trailer = filme.getTrailer();
 
-        String trailer = filme.getTrailer();
-        iniciaYoutubePlayer("XkeIwhKIi84"); //Daft Punk Feat Pharrel Williams - Get Lucky (Album Version Video)
     }
 
-    private void iniciaYoutubePlayer(String video) {
+    @Override
+    public void iniciaYoutubePlayer(List<Video> videoList) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.youtube_fragment_layout, new YoutubeFragment(video))
+                .add(R.id.youtube_fragment_layout, new YoutubeFragment(videoList.get(1).toString()))
                 .addToBackStack("YOUTUBE_PLAYER")
                 .commit();
-    }
-
-    private void sendArgumentPresenter() {
-
     }
 
     private void configuraToolBar(){

@@ -3,6 +3,7 @@ package ericambiel.com.br.smartimdb.ui.listafilmes;
 import java.util.List;
 
 import ericambiel.com.br.smartimdb.data.model.Filme;
+import ericambiel.com.br.smartimdb.data.model.Video;
 
 /**
  * Interface responsavel por designar Presenters e Views as classes (MVP).
@@ -22,6 +23,18 @@ public interface ContratoFilme {
          * @param filmeList lista com filmes a serem exibidos.
          */
         void mostraFilmesPopulares (List<Filme> filmeList);
+
+//        /**
+//         * Comtem lista de trailers a serem exibidos.
+//         * @param videoList lista com trailers a serem exibidos.
+//         */
+//        void mostraTrailers (List<Video> videoList);
+
+        /**
+         * Exibe player do YouTube em novo Fragmento
+         * @param videoList lista de videos a serem executados
+         */
+        void iniciaYoutubePlayer(List<Video> videoList);
 
         /**
          * Exibe erro caso haja problemas de comunicação entre app e endpoints TMDB.
@@ -44,11 +57,11 @@ public interface ContratoFilme {
         /**
          * Obtem filmes da API TMDB.
          */
-        void obtemFilmes();
+        void obtemFilmesPopulares();
 
         /**
-         * Obtem Videos de Filmes como treiles e teasers
+         * Obtem Videos de Filmes como trailes e teasers
          */
-        void obterVideosFilmes();
+        void obtemVideos(Filme filme);
     }
 }

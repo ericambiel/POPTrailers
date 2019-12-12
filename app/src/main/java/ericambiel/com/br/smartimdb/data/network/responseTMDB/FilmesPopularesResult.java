@@ -22,13 +22,16 @@ public class FilmesPopularesResult {
     private final int totalResultados;
 
     @Json(name = "total_pages")
-    private final int toralPaginas;
+    private final int totalPaginas;
 
-    public FilmesPopularesResult(int pagina, List<FilmePopularesResponse> resultadosFilmes, int totalResultados, int toralPaginas) {
+    public FilmesPopularesResult(int pagina,
+                                 List<FilmePopularesResponse> resultadosFilmes,
+                                 int totalResultados,
+                                 int totalPaginas) {
         this.pagina = pagina;
         this.resultadosFilmes = resultadosFilmes;
         this.totalResultados = totalResultados;
-        this.toralPaginas = toralPaginas;
+        this.totalPaginas = totalPaginas;
     }
 
     public int getPagina() {
@@ -43,7 +46,7 @@ public class FilmesPopularesResult {
         return totalResultados;
     }
 
-    public int getToralPaginas() {
-        return toralPaginas;
+    public int getTotalPaginas() {
+        return totalPaginas;
     }
 }

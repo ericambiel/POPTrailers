@@ -7,7 +7,7 @@ import java.io.Serializable
  * https://kotlinlang.org/docs/reference/data-classes.html
  * https://blog.caelum.com.br/eu-preciso-mesmo-de-uma-data-class/
  */
-data class Trailer(
+data class Video(
         /**
          * Chave de acesso a fonte
          */

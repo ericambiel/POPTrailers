@@ -1,9 +1,5 @@
 package com.google.android.youtube.player;
 
-/**
- * Please create this directories schema com.google.android.youtube.player and post the file there
- */
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

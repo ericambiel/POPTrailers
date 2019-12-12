@@ -15,9 +15,10 @@ public class FilmesMapper {
      */
     public static List<Filme> responseToDomain(List<FilmePopularesResponse> listFilmeResponse){
         List<Filme> filmesList = new ArrayList<>();
-
+        //Liga Objeto Filme a FilmePopularResponse
         for (FilmePopularesResponse filmeResponse : listFilmeResponse){
             final  Filme filme = new Filme(
+                    filmeResponse.getId(),
                     filmeResponse.getTituloOriginal(),
                     filmeResponse.getCaminhoPoster());
             filmesList.add(filme);

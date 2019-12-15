@@ -2,7 +2,7 @@ package ericambiel.com.br.smartimdb.data.mapper
 
 import ericambiel.com.br.smartimdb.data.model.Video
 import ericambiel.com.br.smartimdb.data.network.responseTMDB.VideoResponse
-import java.util.ArrayList
+import java.util.*
 
 
 class VideosFilmeMapper {
@@ -21,7 +21,7 @@ class VideosFilmeMapper {
                 val videoFilme = Video(
                         videoFilmeResponse.keyVideo,
                         videoFilmeResponse.tituloVideo,
-                        videoFilmeResponse.paisVideo + "-" + videoFilmeResponse.linguaVideo,
+                        videoFilmeResponse.linguaVideo + "-" + videoFilmeResponse.paisVideo,
                         videoFilmeResponse.fonteVideo,
                         videoFilmeResponse.resolucaoVideo)
                 videosFilmeList.add(videoFilme)

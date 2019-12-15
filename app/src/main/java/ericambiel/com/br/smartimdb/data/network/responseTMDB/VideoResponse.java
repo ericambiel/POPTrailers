@@ -58,7 +58,7 @@ public class VideoResponse {
      * Valores: Trailer, Teaser, Clip, Featurette, Behind the Scenes, Bloopers
      */
     @Json(name = "type")
-    private final int tipoVideo;
+    private final String tipoVideo;
 
     public VideoResponse(String idVideo,
                          String linguaVideo,
@@ -67,7 +67,7 @@ public class VideoResponse {
                          String tituloVideo,
                          String fonteVideo,
                          int resolucaoVideo,
-                         int tipoVideo) {
+                         String tipoVideo) {
         this.idVideo = idVideo;
         this.linguaVideo = linguaVideo;
         this.paisVideo = paisVideo;
@@ -106,7 +106,7 @@ public class VideoResponse {
         return resolucaoVideo;
     }
 
-    public int getTipoVideo() {
+    public String getTipoVideo() {
         return tipoVideo;
     }
 }

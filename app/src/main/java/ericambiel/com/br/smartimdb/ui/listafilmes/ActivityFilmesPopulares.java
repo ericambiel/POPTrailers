@@ -6,17 +6,18 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragmentX;
 
+import java.io.Serializable;
 import java.util.List;
 
 import ericambiel.com.br.smartimdb.R;
 import ericambiel.com.br.smartimdb.data.model.Filme;
-import ericambiel.com.br.smartimdb.data.model.Video;
 import ericambiel.com.br.smartimdb.ui.youtubeplayer.YoutubeFragment;
 
 // Diferente da Activity a AppCompatActivity cria um mesmo
@@ -25,9 +26,10 @@ public class ActivityFilmesPopulares extends AppCompatActivity
         implements ContratoFilme.ViewFilmesPopulares,
             AdapterFilmesPopulares.ItemFilmeClickListener {
 
-    private static final String TAG = "MAIN_ACTIVITY";
+    private static final String tAG = "MAIN_ACTIVITY";
 
     private AdapterFilmesPopulares filmesAdapter;
+
     private ContratoFilme.PresenterFilmesPopulares presenterFilmesPopulares;
 
     YouTubePlayer.OnInitializedListener mOnInitializerListerner;
@@ -58,22 +60,28 @@ public class ActivityFilmesPopulares extends AppCompatActivity
     }
 
     @Override
-    public void mostraErro(){
-        Toast.makeText(this, "Erro ao carregar objeto.", Toast.LENGTH_LONG).show();
+    public void mostraErro(String erro){
+        Toast.makeText(this, "Erro: " + erro, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onClickItemFilme(Filme filme) {
         presenterFilmesPopulares.obtemVideos(filme);
-        //String trailer = filme.getTrailer();
+
 
     }
 
     @Override
-    public void iniciaYoutubePlayer(List<Video> videoList) {
+    public void iniciaYoutubePlayer(List<String> keyVideoList) {
+        Fragment youtubePlayer = new YoutubeFragment();
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("keyVideo", (Serializable) keyVideoList);
+        youtubePlayer.setArguments(bundle);
+
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.youtube_fragment_layout, new YoutubeFragment(videoList.get(1).toString()))
+                .add(R.id.youtube_fragment_layout, youtubePlayer)
                 .addToBackStack("YOUTUBE_PLAYER")
                 .commit();
     }

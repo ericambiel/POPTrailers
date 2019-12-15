@@ -3,7 +3,6 @@ package ericambiel.com.br.smartimdb.ui.listafilmes;
 import java.util.List;
 
 import ericambiel.com.br.smartimdb.data.model.Filme;
-import ericambiel.com.br.smartimdb.data.model.Video;
 
 /**
  * Interface responsavel por designar Presenters e Views as classes (MVP).
@@ -32,14 +31,14 @@ public interface ContratoFilme {
 
         /**
          * Exibe player do YouTube em novo Fragmento
-         * @param videoList lista de videos a serem executados
+         * @param keyVideoList lista de videos a serem executados
          */
-        void iniciaYoutubePlayer(List<Video> videoList);
+        void iniciaYoutubePlayer(List<String> keyVideoList);
 
         /**
          * Exibe erro caso haja problemas de comunicação entre app e endpoints TMDB.
          */
-        void mostraErro();
+        void mostraErro(String erro);
     }
 
     /**

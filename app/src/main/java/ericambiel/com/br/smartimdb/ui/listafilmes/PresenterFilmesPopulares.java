@@ -43,41 +43,46 @@ public class PresenterFilmesPopulares implements ContratoFilme.PresenterFilmesPo
                             viewFilmesPopulares.mostraFilmesPopulares(filmesList);
 
                         } else {
-                            viewFilmesPopulares.mostraErro();
+                            viewFilmesPopulares.mostraErro(response.message());
                         }
                     }
 
                     @Override
                     public void onFailure(@NotNull Call<FilmesPopularesResult> call, @NotNull Throwable t) {
-                        viewFilmesPopulares.mostraErro();
+                        viewFilmesPopulares.mostraErro(t.getMessage());
                     }
                 });
     }
 
     @Override
     public void obtemVideos(Filme filme) {
-        //for(int i = 1; i <= filmesList.size(); i++)
             RetrofitConfig
                     .getInstanceTMDB()
-                    .ObterVideosFilmes(Integer.toString(filmesList.get(1).getIdFilme()), Keys.key_TMDB)
+                    .ObterVideosFilmes(Integer.toString(filme.getIdFilme()), Keys.key_TMDB)
                     .enqueue(new Callback<VideosResult>() {
                         @Override
                         public void onResponse(@NotNull Call<VideosResult> call, @NotNull Response<VideosResult> response) {
                             // status code >= 200 e <300
                             if (response.isSuccessful()) {
-                                final List<Video> videoListList = VideosFilmeMapper
-                                        .responseToDomain(Objects.requireNonNull(response.body()).getResultadosVideos());
+                                final List<Video> videoList = VideosFilmeMapper
+                                        .responseToDomain(Objects
+                                                .requireNonNull(response.body()).getResultadosVideos());
+
+                                //Lista com Videos do filme selecionado
+                                List<String> videoKey = new ArrayList<>();
+                                for (int i = 0; i < videoList.size(); i++ )
+                                    videoKey.add(videoList.get(i).getKeyVideo());
 
                                 //Desacopla camada de domínio da camada de rede
-                                viewFilmesPopulares.iniciaYoutubePlayer(videoListList);
+                                viewFilmesPopulares.iniciaYoutubePlayer(videoKey);
                             } else {
-                                viewFilmesPopulares.mostraErro();
+                                viewFilmesPopulares.mostraErro(response.message());
                             }
                         }
 
                         @Override
                         public void onFailure(@NotNull Call<VideosResult> call, @NotNull Throwable t) {
-                            viewFilmesPopulares.mostraErro();
+                            viewFilmesPopulares.mostraErro(t.getMessage());
                         }
                     });
     }

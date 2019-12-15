@@ -11,7 +11,7 @@ data class Video(
         /**
          * Chave de acesso a fonte
          */
-        val keyTrailer: String?,/**
+        val keyVideo: String?,/**
          * ex: "Fight Club | 20th Century FOX".
          */
         val tituloTrailer: String?,
@@ -24,6 +24,6 @@ data class Video(
          */
         val fonteTrailer: String?,
         /**
-         * ex: 360, 480, 720, 1080.
+         * ex: 360, 480, 720, 1080...
          */
         val resolucaoTrailer: Int?) : Serializable

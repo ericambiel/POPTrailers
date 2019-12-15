@@ -1,9 +1,6 @@
 package ericambiel.com.br.smartimdb.data.network;
 
-import java.util.concurrent.TimeUnit;
-
 import ericambiel.com.br.smartimdb.config.Keys;
-//import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 

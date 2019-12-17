@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerFragmentX;
+import com.google.android.youtube.player.YouTubePlayerSupportFragmentX;
 
 import java.io.Serializable;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ActivityFilmesPopulares extends AppCompatActivity
     private ContratoFilme.PresenterFilmesPopulares presenterFilmesPopulares;
 
     YouTubePlayer.OnInitializedListener mOnInitializerListerner;
-    YouTubePlayerFragmentX youTubePlayerFragmentX;
+    YouTubePlayerSupportFragmentX youTubePlayerSupportFragmentX;
 
     //Primeira vez que a Activity for criada passara por aqui
     @Override
@@ -67,8 +67,6 @@ public class ActivityFilmesPopulares extends AppCompatActivity
     @Override
     public void onClickItemFilme(Filme filme) {
         presenterFilmesPopulares.obtemVideos(filme);
-
-
     }
 
     @Override
@@ -82,7 +80,7 @@ public class ActivityFilmesPopulares extends AppCompatActivity
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.youtube_fragment_layout, youtubePlayer)
-                .addToBackStack("YOUTUBE_PLAYER")
+                .addToBackStack(YoutubeFragment.Companion.getTag())
                 .commit();
     }
 

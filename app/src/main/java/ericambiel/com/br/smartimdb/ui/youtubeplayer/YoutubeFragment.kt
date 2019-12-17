@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import com.google.android.youtube.player.YouTubePlayerFragmentX
+import com.google.android.youtube.player.YouTubePlayerSupportFragmentX
 import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.config.Keys
 
@@ -17,14 +17,20 @@ import ericambiel.com.br.smartimdb.config.Keys
 class YoutubeFragment : Fragment() {
 
     private lateinit var mOnInitializerListerner: YouTubePlayer.OnInitializedListener
-    private lateinit var youTubePlayerFragmentX: YouTubePlayerFragmentX
-    private lateinit var videoKey: List<String>
+    private lateinit var mYouTubePlayerSupportFragmentX: YouTubePlayerSupportFragmentX
+    private lateinit var mVideoKey: List<String>
+    private var mIsTablet: Boolean = false //Telas pequenas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Mantem instância mesmo quando tela é rotacionada
+        //Necessario add na activity dentro do manisfesto:
+        //android:configChanges="orientation|screenSize"
+        retainInstance = true
+
         val bundle: Bundle? = this.arguments
-        videoKey = bundle?.get("keyVideo") as List<String>
+        mVideoKey = bundle?.get("keyVideo") as List<String>
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -32,34 +38,58 @@ class YoutubeFragment : Fragment() {
 
         val transaction: FragmentTransaction = childFragmentManager.beginTransaction()
 
-        youTubePlayerFragmentX = YouTubePlayerFragmentX()
+        mYouTubePlayerSupportFragmentX = YouTubePlayerSupportFragmentX()
         mOnInitializerListerner = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(provider: YouTubePlayer.Provider, youTubePlayer: YouTubePlayer, wasRestored: Boolean) {
-                if (wasRestored) {
-                    youTubePlayer.play()
-                } else {
-                    //youTubePlayer.cueVideo("pRj8x8M2iAI") //Espera dar Play.
-                    youTubePlayer.loadVideo(videoKey[0]) //Chama video direto.
-                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL)
-                }
+
+                configurarEstadoFullScreen(youTubePlayer)
+
+                //youTubePlayer.cueVideo(mVideoKey[0]) //Espera dar Play.
+                youTubePlayer.loadVideo(mVideoKey[0]) //Inicia video direto.
+                youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL)
+
             }
 
             override fun onInitializationFailure(provider: YouTubePlayer.Provider, youTubeInitializationResult: YouTubeInitializationResult) {
-                Log.d(tAG, "Falha ao inicializar Youtube Player!")
+                Log.d(TAG, "Falha ao inicializar Youtube Player!")
             }
         }
 
-        youTubePlayerFragmentX.initialize(Keys.key_YouTube, mOnInitializerListerner)
+        mYouTubePlayerSupportFragmentX.initialize(Keys.KEY_YOUTUBE, mOnInitializerListerner)
 
         // Inicia transação entre Activity e Fragment
-        transaction.add(R.id.youtube_fragment_layout, youTubePlayerFragmentX).commit()
+        transaction.add(R.id.youtube_fragment_layout, mYouTubePlayerSupportFragmentX).commit()
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_youtube, container, false)
     }
 
-    //Constantes
+    /**
+     * Parametros de configuração para quando tela estiver em FullScreen
+     */
+    private fun configurarEstadoFullScreen(youTubePlayer: YouTubePlayer) {
+        // YouTube player flags: use a custom full screen layout; let the YouTube player control
+        // the system UI (hiding navigation controls, ActionBar etc); and let the YouTube player
+        // handle the orientation state of the activity.
+        var mYouTubeFullscreenFlags: Int = YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT or
+                YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI or
+                YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
+
+        // On smaller screen devices always switch to full screen in landscape mode
+        if (!mIsTablet) {
+            mYouTubeFullscreenFlags = mYouTubeFullscreenFlags or YouTubePlayer.FULLSCREEN_FLAG_ALWAYS_FULLSCREEN_IN_LANDSCAPE
+        }
+
+        // Apply full screen flags
+        youTubePlayer.fullscreenControlFlags = mYouTubeFullscreenFlags
+    }
+
+    //Constantes estáticas
     companion object {
-        private const val tAG = "YOUTUBE_PLAYER"
+        private const val TAG = "YOUTUBE_PLAYER"
+
+        fun getTag(): String{
+            return TAG
+        }
     }
 }

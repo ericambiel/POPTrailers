@@ -23,7 +23,7 @@ public class RetrofitConfig {
         if (_INSTANCETMDB == null) {
             Retrofit retrofit = new Retrofit.Builder()
 //                    .client(okHttpClient)
-                    .baseUrl(Keys.baseURL_TMDB)
+                    .baseUrl(Keys.BASE_URL_TMDB)
                     .addConverterFactory(MoshiConverterFactory.create())
                     .build();
 

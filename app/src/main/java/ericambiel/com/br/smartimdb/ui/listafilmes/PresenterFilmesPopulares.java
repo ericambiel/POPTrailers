@@ -32,7 +32,7 @@ public class PresenterFilmesPopulares implements ContratoFilme.PresenterFilmesPo
         //Chama endpoint atravéz do Retrofit
         RetrofitConfig
                 .getInstanceTMDB()
-                .ObterFilmesPopulares(Keys.key_TMDB) //Classe estática com de acesso Keys
+                .ObterFilmesPopulares(Keys.KEY_TMDB) //Classe estática com de acesso Keys
                 .enqueue(new Callback<FilmesPopularesResult>() {
                     @Override
                     public void onResponse(@NotNull Call<FilmesPopularesResult> call, @NotNull Response<FilmesPopularesResult> response) {
@@ -58,7 +58,7 @@ public class PresenterFilmesPopulares implements ContratoFilme.PresenterFilmesPo
     public void obtemVideos(Filme filme) {
             RetrofitConfig
                     .getInstanceTMDB()
-                    .ObterVideosFilmes(Integer.toString(filme.getIdFilme()), Keys.key_TMDB)
+                    .ObterVideosFilmes(Integer.toString(filme.getIdFilme()), Keys.KEY_TMDB)
                     .enqueue(new Callback<VideosResult>() {
                         @Override
                         public void onResponse(@NotNull Call<VideosResult> call, @NotNull Response<VideosResult> response) {

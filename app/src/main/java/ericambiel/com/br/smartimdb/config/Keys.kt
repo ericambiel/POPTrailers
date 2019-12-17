@@ -1,9 +1,11 @@
 package ericambiel.com.br.smartimdb.config
 
-//Classe estática
-object Keys {
-    const val key_TMDB: String = "313f36e207809621639e4fe85151294a"
-    const val key_YouTube: String = "AIzaSyBwSvhhXHE_UBMHiI0kODGE5g5A6jG8jew"
+/**
+ * Objetos estáticos para configuração geral do APP
+ */
+object Keys { //Declaração de classe estática
+    const val KEY_TMDB: String = "313f36e207809621639e4fe85151294a"
+    const val KEY_YOUTUBE: String = "AIzaSyBwSvhhXHE_UBMHiI0kODGE5g5A6jG8jew"
 
-    const val baseURL_TMDB: String = "https://api.themoviedb.org/3/"
+    const val BASE_URL_TMDB: String = "https://api.themoviedb.org/3/"
 }

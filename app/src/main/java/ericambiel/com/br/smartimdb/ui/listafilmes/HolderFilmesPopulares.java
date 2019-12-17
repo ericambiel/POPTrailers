@@ -20,7 +20,8 @@ class HolderFilmesPopulares extends RecyclerView.ViewHolder{
     private AppCompatImageView imagePoster;
     private Filme filme;
 
-    HolderFilmesPopulares(@NonNull View itemView, final AdapterFilmesPopulares.ItemFilmeClickListener itemFilmeClickListener) {
+    HolderFilmesPopulares(@NonNull View itemView,
+                          final AdapterFilmesPopulares.ItemFilmeClickListener itemFilmeClickListener) {
         super(itemView);
 
         textTituloFilme = itemView.findViewById(R.id.text_titulo_filme);
@@ -39,12 +40,12 @@ class HolderFilmesPopulares extends RecyclerView.ViewHolder{
         });
     }
 
-    public void bind(Filme filme){
+    void bind(Filme filme){
         this.filme = filme;
 
-        textTituloFilme.setText(filme.getTituloOriginal());
+        textTituloFilme.setText(filme.getTituloOriginalFilme());
 
         //Baixa a imagem e mostra em um componente imageView
-        Picasso.get().load("https://image.tmdb.org/t/p/w342/" + filme.getCaminhoPoster()).into(imagePoster);
+        Picasso.get().load("https://image.tmdb.org/t/p/w342/" + filme.getCaminhoPosterFilme()).into(imagePoster);
     }
 }

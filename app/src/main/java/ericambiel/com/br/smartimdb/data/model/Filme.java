@@ -5,19 +5,25 @@ import java.io.Serializable;
 /*Implementa Serializable para que possa possa ser entregue a outra Activity que diferente da
  implementada, muito utilizado quando iremos passar dados(objeto) de uma activity para outra.*/
 public class Filme implements Serializable {
-    private final String tituloOriginal;
-    private final String caminhoPoster;
+    private final int idFilme;
+    private final String tituloOriginalFilme;
+    private final String caminhoPosterFilme;
 
-    public Filme(String tituloOriginal, String caminhoPoster) {
-        this.tituloOriginal = tituloOriginal;
-        this.caminhoPoster = caminhoPoster;
+    public Filme(int idFilme, String tituloOriginalFilme, String caminhoPosterFilme) {
+        this.idFilme = idFilme;
+        this.tituloOriginalFilme = tituloOriginalFilme;
+        this.caminhoPosterFilme = caminhoPosterFilme;
     }
 
-    public String getTituloOriginal() {
-        return tituloOriginal;
+    public String getTituloOriginalFilme() {
+        return tituloOriginalFilme;
     }
 
-    public String getCaminhoPoster() {
-        return caminhoPoster;
+    public String getCaminhoPosterFilme() {
+        return caminhoPosterFilme;
+    }
+
+    public int getIdFilme() {
+        return idFilme;
     }
 }

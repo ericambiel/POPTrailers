@@ -29,7 +29,7 @@ public class AdapterFilmesPopulares extends RecyclerView.Adapter<HolderFilmesPop
     //Primeiro metodo a ser chamado na criação da RecycleView
     public HolderFilmesPopulares onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Ira inflar nosso rv dentro de um ViewGroup, no caso a que esta chamando essa classe, 2° paramentro é onde
-        // vai se encaixar no caso no seu parent
+        // vai se encaixar no caso em seu parent
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_item_filme, parent, false);
 
         return new HolderFilmesPopulares(view, itemFilmeClickListener);
@@ -47,9 +47,9 @@ public class AdapterFilmesPopulares extends RecyclerView.Adapter<HolderFilmesPop
         return (listFilmes != null && listFilmes.size() > 0) ? listFilmes.size() : 0;
     }
 
-    public void setFilmes(List<Filme> filmeList){
+    void setFilmes(List<Filme> filmeList){
         this.listFilmes = filmeList;
-        notifyDataSetChanged(); //Faz o binding de cada item pra cada posição e exibi para o usuário
+        notifyDataSetChanged(); //Faz o binding de cada item pra cada posição e exibi ao usuário
     }
 
     /**

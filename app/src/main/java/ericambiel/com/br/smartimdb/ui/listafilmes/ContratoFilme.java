@@ -23,10 +23,22 @@ public interface ContratoFilme {
          */
         void mostraFilmesPopulares (List<Filme> filmeList);
 
+//        /**
+//         * Comtem lista de trailers a serem exibidos.
+//         * @param videoList lista com trailers a serem exibidos.
+//         */
+//        void mostraTrailers (List<Video> videoList);
+
+        /**
+         * Exibe player do YouTube em novo Fragmento
+         * @param keyVideoList lista de videos a serem executados
+         */
+        void iniciaYoutubePlayer(List<String> keyVideoList);
+
         /**
          * Exibe erro caso haja problemas de comunicação entre app e endpoints TMDB.
          */
-        void mostraErro();
+        void mostraErro(String erro);
     }
 
     /**
@@ -42,14 +54,13 @@ public interface ContratoFilme {
 
     interface PresenterFilmesPopulares extends Presenter {
         /**
-         * Atribui valores e parametro a view.
-         * @param viewFilmesPopulares
-         */
-        void setViewFilmesPopulares(ViewFilmesPopulares viewFilmesPopulares);
-
-        /**
          * Obtem filmes da API TMDB.
          */
-        void obtemFilmes();
+        void obtemFilmesPopulares();
+
+        /**
+         * Obtem Videos de Filmes como trailes e teasers
+         */
+        void obtemVideos(Filme filme);
     }
 }

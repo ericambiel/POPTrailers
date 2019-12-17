@@ -1,9 +1,5 @@
 package com.google.android.youtube.player;
 
-/**
- * Please create this directories schema com.google.android.youtube.player and post the file there
- */
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,19 +10,23 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.youtube.player.internal.ab;
 
-public class YouTubePlayerFragmentX extends Fragment implements YouTubePlayer.Provider {
-    private final YouTubePlayerFragmentX.a a = new YouTubePlayerFragmentX.a();
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
+public class YouTubePlayerSupportFragmentX extends Fragment implements YouTubePlayer.Provider {
+    private final YouTubePlayerSupportFragmentX.a a = new YouTubePlayerSupportFragmentX.a();
     private Bundle b;
     private YouTubePlayerView c;
     private String d;
     private YouTubePlayer.OnInitializedListener e;
     private boolean f;
 
-    public static YouTubePlayerFragmentX newInstance() {
-        return new YouTubePlayerFragmentX();
+    public static YouTubePlayerSupportFragmentX newInstance() {
+        return new YouTubePlayerSupportFragmentX();
     }
 
-    public YouTubePlayerFragmentX() {
+    public YouTubePlayerSupportFragmentX() {
     }
 
     public void initialize(String var1, YouTubePlayer.OnInitializedListener var2) {
@@ -50,8 +50,8 @@ public class YouTubePlayerFragmentX extends Fragment implements YouTubePlayer.Pr
         this.b = var1 != null ? var1.getBundle("YouTubePlayerSupportFragment.KEY_PLAYER_VIEW_STATE") : null;
     }
 
-    public View onCreateView(LayoutInflater var1, ViewGroup var2, Bundle var3) {
-        this.c = new YouTubePlayerView(this.getActivity(), null, 0, this.a);
+    public View onCreateView(@NotNull LayoutInflater var1, ViewGroup var2, Bundle var3) {
+        this.c = new YouTubePlayerView(Objects.requireNonNull(this.getActivity()), null, 0, this.a);
         this.a();
         return this.c;
     }
@@ -71,7 +71,7 @@ public class YouTubePlayerFragmentX extends Fragment implements YouTubePlayer.Pr
         super.onPause();
     }
 
-    public void onSaveInstanceState(Bundle var1) {
+    public void onSaveInstanceState(@NotNull Bundle var1) {
         super.onSaveInstanceState(var1);
         Bundle var2 = this.c != null ? this.c.e() : this.b;
         var1.putBundle("YouTubePlayerSupportFragment.KEY_PLAYER_VIEW_STATE", var2);
@@ -83,7 +83,7 @@ public class YouTubePlayerFragmentX extends Fragment implements YouTubePlayer.Pr
     }
 
     public void onDestroyView() {
-        this.c.c(this.getActivity().isFinishing());
+        this.c.c(Objects.requireNonNull(this.getActivity()).isFinishing());
         this.c = null;
         super.onDestroyView();
     }
@@ -102,7 +102,7 @@ public class YouTubePlayerFragmentX extends Fragment implements YouTubePlayer.Pr
         }
 
         public final void a(YouTubePlayerView var1, String var2, YouTubePlayer.OnInitializedListener var3) {
-            YouTubePlayerFragmentX.this.initialize(var2, YouTubePlayerFragmentX.this.e);
+            YouTubePlayerSupportFragmentX.this.initialize(var2, YouTubePlayerSupportFragmentX.this.e);
         }
 
         public final void a(YouTubePlayerView var1) {

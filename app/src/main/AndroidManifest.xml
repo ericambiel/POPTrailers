@@ -13,19 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.detalhesfilme.DetalhesFilmeActivity" />
         <activity
-            android:name=".ui.listafilmes.ActivityFilmesPopulares"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize">
+            android:name=".ui.menuprincipal.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait">
             <intent-filter>
-
                 <!-- Indica que essa sera a primeira Activity a ser exibida ao entrar no APP -->
                 <action android:name="android.intent.action.MAIN" />
                 <!-- Indica que o icone do app ficara disponivel na tela principal -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.listafilmes.ActivityFilmesPopulares"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ui.detalhesfilme.DetalhesFilmeActivity" />
     </application>
 
 </manifest>

@@ -9,4 +9,8 @@
     <color name="secondaryLightColor">#8559da</color>
     <color name="secondaryDarkColor">#140078</color>
     <color name="secondaryTextColor">#ffffff</color>
+
+    <color name="linkColor">#00A6FF</color>
+    <color name="navButtonColor">#77D353</color>
+    <!--color name="viewLineColor">#DDDDDD</color-->
 </resources>

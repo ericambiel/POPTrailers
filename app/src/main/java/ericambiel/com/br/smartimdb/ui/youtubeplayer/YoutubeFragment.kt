@@ -58,7 +58,7 @@ class YoutubeFragment : Fragment() {
         mYouTubePlayerSupportFragmentX.initialize(Keys.KEY_YOUTUBE, mOnInitializerListerner)
 
         // Inicia transação entre Activity e Fragment
-        transaction.add(R.id.youtube_fragment_layout, mYouTubePlayerSupportFragmentX).commit()
+        transaction.add(R.id.fl_filmes_populares, mYouTubePlayerSupportFragmentX).commit()
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_youtube, container, false)
@@ -71,7 +71,8 @@ class YoutubeFragment : Fragment() {
         // YouTube player flags: use a custom full screen layout; let the YouTube player control
         // the system UI (hiding navigation controls, ActionBar etc); and let the YouTube player
         // handle the orientation state of the activity.
-        var mYouTubeFullscreenFlags: Int = YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT or
+        var mYouTubeFullscreenFlags: Int =
+                YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT or
                 YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI or
                 YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
 

@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.ui.listafilmes;
+package ericambiel.com.br.smartimdb.ui.menuprincipal.filmespopulares;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -14,16 +14,17 @@ import ericambiel.com.br.smartimdb.data.model.Video;
 import ericambiel.com.br.smartimdb.data.network.RetrofitConfig;
 import ericambiel.com.br.smartimdb.data.network.responseTMDB.FilmesPopularesResult;
 import ericambiel.com.br.smartimdb.data.network.responseTMDB.VideosResult;
+import ericambiel.com.br.smartimdb.ui.menuprincipal.FilmeContrato;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PresenterFilmesPopulares implements ContratoFilme.PresenterFilmesPopulares {
-    private ContratoFilme.ViewFilmesPopulares viewFilmesPopulares;
+public class FilmesPopularesPresenter implements FilmeContrato.PresenterFilmesPopulares {
+    private FilmeContrato.ViewFilmesPopulares viewFilmesPopulares;
 
     private List<Filme> filmesList = new ArrayList<>();
 
-    PresenterFilmesPopulares(ContratoFilme.ViewFilmesPopulares viewFilmesPopulares) {
+    FilmesPopularesPresenter(FilmeContrato.ViewFilmesPopulares viewFilmesPopulares) {
         this.viewFilmesPopulares = viewFilmesPopulares;
     }
 

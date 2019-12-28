@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.ui.listafilmes;
+package ericambiel.com.br.smartimdb.ui.menuprincipal;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import ericambiel.com.br.smartimdb.data.model.Filme;
 /**
  * Interface responsavel por designar Presenters e Views as classes (MVP).
  */
-public interface ContratoFilme {
+public interface FilmeContrato {
     /**
      * Interface a ser extendia para todas as Views.
      * Comum a todas as Views.

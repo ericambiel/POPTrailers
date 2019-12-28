@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_videos_populares">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_videos_populares"
+        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.filmespopulares.FilmesPopularesFragment"
+        android:label="@string/menu_filmes_populares"
+        tools:layout="@layout/fragment_videos_populares" />
 
     <fragment
         android:id="@+id/nav_gallery"

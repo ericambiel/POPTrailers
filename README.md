@@ -1,2 +1,2 @@
 # smartIMDB
-Buscador de filmes no banco IMDB
+Buscador de filmes no banco TMDB/IMDB

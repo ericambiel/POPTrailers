@@ -7,37 +7,7 @@
 
     <fragment
         android:id="@+id/nav_videos_populares"
-        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.filmespopulares.FilmesPopularesFragment"
-        android:label="@string/menu_filmes_populares"
+        android:name="ericambiel.com.br.smartimdb.ui.filmespopulares.FilmesPopularesFragment"
+        android:label="@string/item_filmes_populares"
         tools:layout="@layout/fragment_videos_populares" />
-
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="ericambiel.com.br.smartimdb.ui.menuprincipal.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>

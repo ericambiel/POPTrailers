@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Segundo testes, foi observado que os valores inteiros
+        dos IDs são adicionados na ordem crescente de
+        declaração de <itens>.
+    -->
+    <item name="item_filmes_populares" type="id" format="integer" />
+    <item name="item_ferramentas" type="id" format="integer" />
+    <item name="item_compartilhar" type="id" format="integer" />
+    <item name="item_contato" type="id" format="integer" />
+    <item name="item_politica_privacidade" type="id" format="integer" />
+    <item name="item_fav_media" type="id" format="integer" />
+</resources>

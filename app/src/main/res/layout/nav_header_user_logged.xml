@@ -12,7 +12,6 @@
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/iv_user"
-        android:background="@mipmap/ic_launcher_round"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_alignParentTop="true"

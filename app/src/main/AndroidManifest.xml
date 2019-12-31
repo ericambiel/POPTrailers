@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.menuprincipal.MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize"
@@ -26,12 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.listafilmes.ActivityFilmesPopulares"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".ui.detalhesfilme.DetalhesFilmeActivity" />
     </application>
 
 </manifest>

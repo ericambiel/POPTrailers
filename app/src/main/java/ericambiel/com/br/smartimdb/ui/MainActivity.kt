@@ -3,6 +3,7 @@ package ericambiel.com.br.smartimdb.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -54,18 +55,18 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
 
-        initNavMenu( savedInstanceState )
+        //Adiciona botão para abrir menu gaveta
+        val toggle = ActionBarDrawerToggle(
+                this,
+                drawer_layout,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        )
+        drawer_layout.addDrawerListener( toggle )
+        toggle.syncState()
 
-//        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-//        val navView: NavigationView = findViewById(R.id.nav_view)
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        appBarConfiguration = AppBarConfiguration(setOf(
-//                R.id.nav_videos_populares),
-//                drawerLayout)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navView.setupWithNavController(navController)
+        initNavMenu( savedInstanceState )
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -98,7 +99,6 @@ class MainActivity : AppCompatActivity() {
     private fun initNavMenuItems(){
         rv_menu_items.setHasFixedSize( false )
         rv_menu_items.layoutManager = LinearLayoutManager( this )
-        //rv_menu_items.adapter = NavMenuItemsAdapter( NavMenuItemsDataBase( this ).items )
         rv_menu_items.adapter = NavMenuItemsAdapter( navMenuItems )
 
         initNavMenuItemsSelection()
@@ -237,13 +237,11 @@ class MainActivity : AppCompatActivity() {
          * Responsável por permitir que seja possível disparar alguma ação de acordo com a mudança
          * de status de algum item em algum dos objetos de seleção de itens de menu gaveta.
          */
-
         /*
           Aqui vamos proceder com alguma ação somente em caso de item obtendo seleção, para item
           perdendo seleção não haverá processamento, pois este status não importa na lógica de
           negócio deste método.
          * */
-
         override fun onItemStateChanged(
                 key: Long,
                 selected: Boolean ) {

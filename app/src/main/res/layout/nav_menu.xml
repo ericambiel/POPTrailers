@@ -4,8 +4,8 @@
     android:orientation="vertical"
     android:layout_gravity="start"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primaryColor">
+    android:layout_height="match_parent">
+<!--    android:background="@color/primaryColor">-->
 
     <!-- Código da primeira e principal lista de itens. -->
     <androidx.recyclerview.widget.RecyclerView

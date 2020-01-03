@@ -3,8 +3,8 @@ package ericambiel.com.br.smartimdb.data.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import ericambiel.com.br.smartimdb.data.model.Filme;
 import ericambiel.com.br.smartimdb.data.network.responseTMDB.FilmePopularesResponse;
+import ericambiel.com.br.smartimdb.domain.Filme;
 
 public class FilmesMapper {
     /**

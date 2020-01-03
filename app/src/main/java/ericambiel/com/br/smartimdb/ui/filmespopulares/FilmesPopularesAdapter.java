@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ericambiel.com.br.smartimdb.R;
-import ericambiel.com.br.smartimdb.data.model.Filme;
+import ericambiel.com.br.smartimdb.domain.Filme;
 
 public class FilmesPopularesAdapter extends RecyclerView.Adapter<FilmesPopularesHolder> {
 

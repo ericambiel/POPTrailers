@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ericambiel.com.br.smartimdb.R
-import ericambiel.com.br.smartimdb.data.model.Filme
+import ericambiel.com.br.smartimdb.domain.Filme
 import ericambiel.com.br.smartimdb.ui.FilmeContrato
 import ericambiel.com.br.smartimdb.ui.FilmeContrato.ViewFilmesPopulares
 import ericambiel.com.br.smartimdb.ui.filmespopulares.FilmesPopularesAdapter.ItemFilmeClickListener

@@ -2,7 +2,7 @@ package ericambiel.com.br.smartimdb.ui;
 
 import java.util.List;
 
-import ericambiel.com.br.smartimdb.data.model.Filme;
+import ericambiel.com.br.smartimdb.domain.Filme;
 
 /**
  * Interface responsavel por designar Presenters e Views as classes (MVP).

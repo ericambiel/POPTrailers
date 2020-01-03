@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import ericambiel.com.br.smartimdb.R;
-import ericambiel.com.br.smartimdb.data.model.Filme;
+import ericambiel.com.br.smartimdb.domain.Filme;
 
 //Classe contem conteudo do RV
 class FilmesPopularesHolder extends RecyclerView.ViewHolder{

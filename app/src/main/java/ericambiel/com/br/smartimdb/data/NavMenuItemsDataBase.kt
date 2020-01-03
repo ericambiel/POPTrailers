@@ -30,6 +30,11 @@ class NavMenuItemsDataBase( context: Context) {
                     R.id.item_politica_privacidade.toLong(),
                     context.getString(R.string.item_politica_privacidade),
                     R.drawable.ic_lock_black_24dp
+            ),
+            NavMenuItem(
+                    R.id.item_politica_privacidade.toLong(),
+                    context.getString(R.string.item_politica_privacidade),
+                    R.drawable.ic_lock_black_24dp
             )
     )
 

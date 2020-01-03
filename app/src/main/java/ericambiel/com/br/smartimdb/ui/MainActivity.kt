@@ -3,17 +3,20 @@ package ericambiel.com.br.smartimdb.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.data.NavMenuItemsDataBase
@@ -55,16 +58,14 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
 
-        //Adiciona botão para abrir menu gaveta
-        val toggle = ActionBarDrawerToggle(
-                this,
-                drawer_layout,
-                toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close
-        )
-        drawer_layout.addDrawerListener( toggle )
-        toggle.syncState()
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val navController = findNavController(R.id.nav_host_fragment)
+
+        findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)
+        appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
 
         initNavMenu( savedInstanceState )
     }

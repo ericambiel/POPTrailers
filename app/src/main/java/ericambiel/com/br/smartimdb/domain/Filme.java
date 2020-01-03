@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.data.model;
+package ericambiel.com.br.smartimdb.domain;
 
 import java.io.Serializable;
 

@@ -60,12 +60,29 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
+
+        //Usando a helper class Navigation podemos encontrar o componente do NavController
+        //Baseado no NavHostFragment que está hospedado em nosso Layout Principal
         val navController = findNavController(R.id.nav_host_fragment)
 
+
         findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)
+
+        //Instanciamos o AppBarConfiguration e setamos o controlador
         appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
         navView.setupWithNavController(navController)
+
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            if(destination.id == R.id.full_screen_destination) {
+//                toolbar.visibility = View.GONE
+//                //bottomNavigationView.visibility = View.GONE
+//            } else {
+//                toolbar.visibility = View.VISIBLE
+//               // bottomNavigationView.visibility = View.VISIBLE
+//            }
+//        }
 
         initNavMenu( savedInstanceState )
     }
@@ -88,6 +105,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }

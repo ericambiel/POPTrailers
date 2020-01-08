@@ -2,7 +2,6 @@
     <string name="app_name">smartIMDB</string>
 
 
-
     <!-- Main Activity -->
 
     <string name="title_activity_main">POP Trailers</string>
@@ -17,14 +16,58 @@
     <string name="tx_me_sign_up">me Cadastrar</string>
     <string name="tx_conected_as">Conectado como:</string>
 
+    <!--Itens do Menu-->
     <string name="item_filmes_populares">Videos Populares</string>
-<!--    <string name="menu_gallery">Gallery</string>-->
-<!--    <string name="menu_slideshow">Slideshow</string>-->
     <string name="item_ferramentas">Tools</string>
     <string name="item_compartilhar">Compartilhar</string>
-<!--    <string name="menu_send">Send</string>-->
-<!--    <string name="item_media_social">Social</string>-->
-    <string name="item_contato">Contato</string>
+    <string name="item_sobre">Sobre</string>
     <string name="item_politica_privacidade">Privacidade</string>
     <string name="item_fav_media">Favoritos</string>
+    <!--Itens do Menu-->
+
+    <!-- AboutFragment -->
+    <string name="about_frag_title">Sobre a BlueShoes</string>
+
+    <string name="about_frag_mission_title">Missão</string>
+    <string name="about_frag_mission_desc">
+        Inspirar e transformar a vida das pessoas com calçados que
+        permitem qualquer atividade no dia a dia.
+    </string>
+
+    <string name="about_frag_vision_title">Visão</string>
+    <string name="about_frag_vision_desc">
+        A melhor e mais inovadora experiência de compra do varejo
+        de calçados.
+    </string>
+
+    <string name="about_frag_values_title">Valores</string>
+    <string name="about_frag_values_desc">
+        Ética, responsabilidade, espírito de equipe, inspiração e
+        foco.
+    </string>
+
+    <string name="about_frag_ethic_title">Ética e integridade</string>
+    <string name="about_frag_ethic_desc">
+        A ética e a integridade fazem parte da nossa cultura e são
+        essenciais para o nosso negócio.
+    </string>
+
+    <string name="about_frag_social_networks_title">
+        Nos acompanhe nas redes sociais e não perca as promoções
+    </string>
+
+    <string name="ic_instagram_desc">Ícone do Instagram POPTrailers</string>
+    <string name="label_instagram">/POPTrailers</string>
+
+    <string name="ic_facebook_desc">Ícone do Facebook POPTrailers</string>
+    <string name="label_facebook">/POPTrailersFace</string>
+
+    <string name="ic_youtube_desc">Ícone do YouTube POPTrailers</string>
+    <string name="label_youtube">/POPTrailersYT</string>
+    <string name="info_linkedin">Para videos demonstrativos!</string>
+
+    <string name="ic_cnpj_desc">Ícone do CNPJ POPTrailers</string>
+    <string name="label_cnpj">CNPJ XX.XXX.XXX/XXXX&#8211;10</string>
+    <!-- AboutFragment -->
+
 </resources>

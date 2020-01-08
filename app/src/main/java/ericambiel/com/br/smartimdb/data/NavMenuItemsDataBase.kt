@@ -22,14 +22,9 @@ class NavMenuItemsDataBase( context: Context) {
                     R.drawable.ic_menu_share_24db
             ),
             NavMenuItem(
-                    R.id.item_contato.toLong(),
-                    context.getString(R.string.item_contato),
-                    R.drawable.ic_email_black_24dp
-            ),
-            NavMenuItem(
-                    R.id.item_politica_privacidade.toLong(),
-                    context.getString(R.string.item_politica_privacidade),
-                    R.drawable.ic_lock_black_24dp
+                    R.id.item_sobre.toLong(),
+                    context.getString(R.string.item_sobre),
+                    R.drawable.ic_domain_black_24dp
             ),
             NavMenuItem(
                     R.id.item_politica_privacidade.toLong(),

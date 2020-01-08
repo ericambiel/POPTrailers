@@ -15,4 +15,7 @@
     <color name="viewLineColor">#DDDDDD</color>
 
     <color name="navItemSelectedColor">#F1F1F1</color>
+
+    <color name="lightGreenBoxColor">#BB77D353</color>
+    <color name="orangeInfoColor">#FF9052</color>
 </resources>

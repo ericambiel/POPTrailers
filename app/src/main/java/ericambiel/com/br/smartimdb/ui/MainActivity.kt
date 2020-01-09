@@ -160,7 +160,6 @@ class MainActivity : AppCompatActivity() {
     private fun initNavMenuItemsLogged(){
         rv_menu_items_logged.setHasFixedSize( true )
         rv_menu_items_logged.layoutManager = LinearLayoutManager( this )
-  //      rv_menu_items_logged.adapter = NavMenuItemsAdapter( NavMenuItemsDataBase( this ).itemsLogged )
         rv_menu_items_logged.adapter = NavMenuItemsAdapter( navMenuItemsLogged )
 
         initNavMenuItemsLoggedSelection()
@@ -195,6 +194,9 @@ class MainActivity : AppCompatActivity() {
         (rv_menu_items_logged.adapter as NavMenuItemsAdapter).selectionTracker = selectNavMenuItemsLogged
     }
 
+    /**
+     * Coloca o usuário e sua foto no Menu Gaveta
+     */
     private fun fillUserHeaderNavMenu(){
         if( user.status ) { /* Conectado */
             iv_user.setImageResource(user.image)
@@ -225,10 +227,13 @@ class MainActivity : AppCompatActivity() {
      * */
     private fun initNavMenu( savedInstanceState: Bundle? ){
 
+        //Objeto com todos os menus
         val navMenu = NavMenuItemsDataBase( this )
+        //Objeto com menus off-line
         navMenuItems = navMenu.items
+        //Objeto com menu Logados
         navMenuItemsLogged = navMenu.itemsLogged
-
+        //Altera cabeçalho do menu entre logado e não logado
         showHideNavMenuViews()
 
         initNavMenuItems()

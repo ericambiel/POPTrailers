@@ -13,24 +13,23 @@ import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.domain.NavMenuItem
 import ericambiel.com.br.smartimdb.util.NavMenuItemDetails
 
-class NavMenuItemsAdapter ( val items: List<NavMenuItem> ) :
+class NavMenuItemsAdapter (private val items: List<NavMenuItem> ) :
         RecyclerView.Adapter<NavMenuItemsAdapter.ViewHolder>() {
 
+    //Responsavel pela selçao dentro do RV
     lateinit var selectionTracker: SelectionTracker<Long>
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            type: Int ): ViewHolder {
-
-        val layout = LayoutInflater
-                .from( parent.context )
-                .inflate(
-                        R.layout.nav_menu_item,
-                        parent,
-                        false
-                )
-
-        return ViewHolder( layout )
+        parent: ViewGroup,
+        type: Int ): ViewHolder {
+            val layout = LayoutInflater
+                    .from( parent.context )
+                    .inflate(
+                            R.layout.nav_menu_item,
+                            parent,
+                            false
+                    )
+            return ViewHolder( layout )
     }
 
     override fun onBindViewHolder(

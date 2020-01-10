@@ -26,18 +26,18 @@
     <!--Itens do Menu-->
 
     <!-- AboutFragment -->
-    <string name="about_frag_title">Sobre a BlueShoes</string>
+    <string name="about_frag_title">Sobre POP Trailers</string>
 
     <string name="about_frag_mission_title">Missão</string>
     <string name="about_frag_mission_desc">
-        Inspirar e transformar a vida das pessoas com calçados que
-        permitem qualquer atividade no dia a dia.
+        Inspirar e transformar a vida das pessoas com os melhores
+        Trailers sempre com as novidades do momento.
     </string>
 
     <string name="about_frag_vision_title">Visão</string>
     <string name="about_frag_vision_desc">
-        A melhor e mais inovadora experiência de compra do varejo
-        de calçados.
+        A melhor e mais inovadora experiência multimídia
+        com trailers que já viu.
     </string>
 
     <string name="about_frag_values_title">Valores</string>
@@ -53,7 +53,7 @@
     </string>
 
     <string name="about_frag_social_networks_title">
-        Nos acompanhe nas redes sociais e não perca as promoções
+        Nos acompanhe nas redes sociais e não perca as novidades
     </string>
 
     <string name="ic_instagram_desc">Ícone do Instagram POPTrailers</string>
@@ -67,7 +67,7 @@
     <string name="info_linkedin">Para videos demonstrativos!</string>
 
     <string name="ic_cnpj_desc">Ícone do CNPJ POPTrailers</string>
-    <string name="label_cnpj">CNPJ XX.XXX.XXX/XXXX&#8211;10</string>
+    <string name="label_cnpj">CNPJ XX.XXX.XXX/XXXX&#8211;XX</string>
     <!-- AboutFragment -->
 
 </resources>

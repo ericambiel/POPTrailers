@@ -7,31 +7,8 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include layout="@layout/app_bar_main"/>
+    <include layout="@layout/app_bar_content"/>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true">
-        <!--        app:headerLayout="@layout/nav_menu_cabecalho">-->
-        <!--        app:menu="@menu/activity_main_drawer"/>-->
-<!--        <androidx.core.widget.NestedScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+    <include layout="@layout/app_navigation"/>
 
-                <!-- Cabeçalho -->
-                <include layout="@layout/nav_menu_cabecalho" />
-
-                <!-- Itens do menu -->
-                <include layout="@layout/nav_menu"/>
-
-            </LinearLayout>
-<!--        </androidx.core.widget.NestedScrollView>-->
-    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -9,20 +9,11 @@
         android:id="@id/nav_videos_populares"
         android:name="ericambiel.com.br.smartimdb.ui.filmespopulares.FilmesPopularesFragment"
         android:label="@string/item_filmes_populares"
-        tools:layout="@layout/fragment_videos_populares" >
-        <action
-            android:id="@+id/action_nav_videos_populares_to_youTubePlayerSupportFragmentX2"
-            app:destination="@id/youtube_fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_videos_populares" />
 
     <fragment
         android:id="@id/nav_about"
         android:name="ericambiel.com.br.smartimdb.ui.about.AboutFragment"
         android:label="@string/item_sobre"
         tools:layout="@layout/fragment_about" />
-    <fragment
-        android:id="@id/youtube_fragment"
-        android:name="ericambiel.com.br.smartimdb.ui.youtubeplayer.YoutubeFragment"
-        android:label="YouTubePlayer"
-        tools:layout="@layout/fragment_youtube" />
 </navigation>

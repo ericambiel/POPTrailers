@@ -11,12 +11,12 @@ import java.util.List;
  *
  * verificar: https://developers.themoviedb.org/3/movies/get-popular-movies
  */
-public class FilmesPopularesResult {
+public class MediaResult {
     @Json(name = "page")
     private final int pagina; // Se nome da variavel igual ao do Json não é necessário @Json
 
     @Json(name = "results")
-    private final List<FilmePopularesResponse> resultadosFilmes;
+    private final List<MediaResponse> resultadosFilmes;
 
     @Json(name = "total_results")
     private final int totalResultados;
@@ -24,10 +24,10 @@ public class FilmesPopularesResult {
     @Json(name = "total_pages")
     private final int totalPaginas;
 
-    public FilmesPopularesResult(int pagina,
-                                 List<FilmePopularesResponse> resultadosFilmes,
-                                 int totalResultados,
-                                 int totalPaginas) {
+    public MediaResult(int pagina,
+                       List<MediaResponse> resultadosFilmes,
+                       int totalResultados,
+                       int totalPaginas) {
         this.pagina = pagina;
         this.resultadosFilmes = resultadosFilmes;
         this.totalResultados = totalResultados;
@@ -38,7 +38,7 @@ public class FilmesPopularesResult {
         return pagina;
     }
 
-    public List<FilmePopularesResponse> getResultadosFilmes() {
+    public List<MediaResponse> getResultadosFilmes() {
         return resultadosFilmes;
     }
 

@@ -68,6 +68,7 @@
 
     <string name="ic_cnpj_desc">Ícone do CNPJ POPTrailers</string>
     <string name="label_cnpj">CNPJ XX.XXX.XXX/XXXX&#8211;XX</string>
+    <string name="bar_search">Encontrar</string>
     <!-- AboutFragment -->
 
 </resources>

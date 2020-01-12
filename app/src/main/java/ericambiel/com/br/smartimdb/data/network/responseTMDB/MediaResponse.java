@@ -11,7 +11,7 @@ import java.util.List;
  *
  * verificar: https://developers.themoviedb.org/3/movies/get-popular-movies
  */
-public class FilmePopularesResponse {
+public class MediaResponse {
     @Json(name = "poster_path")
     private final String caminhoPoster;
 
@@ -49,28 +49,28 @@ public class FilmePopularesResponse {
     @Json(name = "popularity")
     private final double popularidade;
 
-    @Json(name = "vote_count")
-    private final int contagemVotos;
-
 //    @Json(name = "video")
 //    private final boolean video; //    Sempre vem falso
+
+    @Json(name = "vote_count")
+    private final int contagemVotos;
 
     @Json(name = "vote_average")
     private final double estrelas;
 
-    public FilmePopularesResponse(String caminhoPoster,
-                                  Boolean adulto,
-                                  String sinopse,
-                                  String dataLancamento,
-                                  List<Integer> idsGenero,
-                                  int id,
-                                  String tituloOriginal,
-                                  String linguaOriginal,
-                                  String titulo,
-                                  String planoFundo,
-                                  double popularidade,
-                                  int contagemVotos,
-                                  double estrelas) {
+    public MediaResponse(String caminhoPoster,
+                         Boolean adulto,
+                         String sinopse,
+                         String dataLancamento,
+                         List<Integer> idsGenero,
+                         int id,
+                         String tituloOriginal,
+                         String linguaOriginal,
+                         String titulo,
+                         String planoFundo,
+                         double popularidade,
+                         int contagemVotos,
+                         double estrelas) {
         this.caminhoPoster = caminhoPoster;
         this.adulto = adulto;
         this.sinopse = sinopse;

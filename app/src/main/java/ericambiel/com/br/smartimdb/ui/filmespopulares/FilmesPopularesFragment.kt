@@ -9,21 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ericambiel.com.br.smartimdb.R
-import ericambiel.com.br.smartimdb.domain.Filme
-import ericambiel.com.br.smartimdb.ui.FilmeContrato
-import ericambiel.com.br.smartimdb.ui.FilmeContrato.ViewFilmesPopulares
-import ericambiel.com.br.smartimdb.ui.filmespopulares.FilmesPopularesAdapter.ItemFilmeClickListener
+import ericambiel.com.br.smartimdb.domain.Media
+import ericambiel.com.br.smartimdb.ui.util.CommonMediaAdapter
 import ericambiel.com.br.smartimdb.ui.youtubeplayer.YoutubeFragment
 import java.io.Serializable
 
-class FilmesPopularesFragment : Fragment(), ViewFilmesPopulares, ItemFilmeClickListener {
-    private var filmesAdapter: FilmesPopularesAdapter? = null
-    private var presenterFilmesPopulares: FilmeContrato.PresenterFilmesPopulares? = null
+class FilmesPopularesFragment :
+        Fragment(),
+        FilmePopularesContrato.ViewFilmesPopulares,
+        CommonMediaAdapter.ItemMediaClickListener {
+    private lateinit var filmesAdapter: CommonMediaAdapter
+    private lateinit var presenterFilmesPopulares: FilmesPopularesPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenterFilmesPopulares = FilmesPopularesPresenter(this)
-        (presenterFilmesPopulares as FilmesPopularesPresenter).obtemFilmesPopulares()
+        presenterFilmesPopulares.getMedia()
         configuraAdapter()
     }
 
@@ -33,29 +34,24 @@ class FilmesPopularesFragment : Fragment(), ViewFilmesPopulares, ItemFilmeClickL
 
     override fun onDestroy() {
         super.onDestroy()
-        presenterFilmesPopulares!!.destruirView()
+        presenterFilmesPopulares.destruirView()
     }
 
-    override fun mostraFilmesPopulares(filmesList: List<Filme>) {
-        filmesAdapter!!.setFilmes(filmesList)
+    override fun showMedia(mediaList: MutableList<Media>?) {
+        filmesAdapter.setFilmes(mediaList)
     }
 
     override fun mostraErro(erro: String) {
         Toast.makeText(context, "Erro: $erro", Toast.LENGTH_LONG).show()
     }
 
-    override fun onClickItemFilme(filme: Filme) {
-        presenterFilmesPopulares!!.obtemVideos(filme)
+    override fun onClickItemFilme(media: Media) {
+        presenterFilmesPopulares.getVideos(media)
     }
 
-//    private void configuraToolBar(){
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//    }
-
     private fun configuraAdapter() {
-        val recyclerView: RecyclerView? = activity?.findViewById(R.id.recycler_filmes)
-        filmesAdapter = FilmesPopularesAdapter(this)
+        val recyclerView: RecyclerView? = activity?.findViewById(R.id.recycler_videos)
+        filmesAdapter = CommonMediaAdapter(this)
         //Constroi LayoutManager
         val gridLayoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 2)
         //Seta LayoutManager
@@ -77,6 +73,6 @@ class FilmesPopularesFragment : Fragment(), ViewFilmesPopulares, ItemFilmeClickL
     }
 
     companion object {
-        private const val TAG = "FILMES_POPULARES"
+        const val TAG = "FILMES_POPULARES"
     }
 }

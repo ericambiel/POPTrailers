@@ -10,38 +10,38 @@ import ericambiel.com.br.smartimdb.config.Keys;
 import ericambiel.com.br.smartimdb.data.mapper.FilmesMapper;
 import ericambiel.com.br.smartimdb.data.mapper.VideosFilmeMapper;
 import ericambiel.com.br.smartimdb.data.network.RetrofitConfig;
-import ericambiel.com.br.smartimdb.data.network.responseTMDB.FilmesPopularesResult;
+import ericambiel.com.br.smartimdb.data.network.responseTMDB.MediaResult;
 import ericambiel.com.br.smartimdb.data.network.responseTMDB.VideosResult;
-import ericambiel.com.br.smartimdb.domain.Filme;
+import ericambiel.com.br.smartimdb.domain.Media;
 import ericambiel.com.br.smartimdb.domain.Video;
-import ericambiel.com.br.smartimdb.ui.FilmeContrato;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FilmesPopularesPresenter implements FilmeContrato.PresenterFilmesPopulares {
-    private FilmeContrato.ViewFilmesPopulares viewFilmesPopulares;
+public class FilmesPopularesPresenter
+        implements FilmePopularesContrato.PresenterFilmesPopulares {
+    private FilmePopularesContrato.ViewFilmesPopulares viewFilmesPopulares;
 
-    private List<Filme> filmesList = new ArrayList<>();
+    private List<Media> filmesList = new ArrayList<>();
 
-    FilmesPopularesPresenter(FilmeContrato.ViewFilmesPopulares viewFilmesPopulares) {
+    FilmesPopularesPresenter(FilmePopularesContrato.ViewFilmesPopulares viewFilmesPopulares) {
         this.viewFilmesPopulares = viewFilmesPopulares;
     }
 
     @Override
-    public void obtemFilmesPopulares() {
+    public void getMedia() {
         //Chama endpoint atravéz do Retrofit
         RetrofitConfig
                 .getInstanceTMDB()
-                .ObterFilmesPopulares(Keys.KEY_TMDB) //Classe estática com de acesso Keys
-                .enqueue(new Callback<FilmesPopularesResult>() {
+                .getPopularMedia(Keys.KEY_TMDB) //Classe estática com de acesso Keys
+                .enqueue(new Callback<MediaResult>() {
                     @Override
-                    public void onResponse(@NotNull Call<FilmesPopularesResult> call, @NotNull Response<FilmesPopularesResult> response) {
+                    public void onResponse(@NotNull Call<MediaResult> call, @NotNull Response<MediaResult> response) {
                         // status code >= 200 e <300
                         if(response.isSuccessful()) {
                             filmesList = FilmesMapper.responseToDomain(Objects.requireNonNull(response.body()).getResultadosFilmes());
                             //Desacopla camada de domínio da camada de rede
-                            viewFilmesPopulares.mostraFilmesPopulares(filmesList);
+                            viewFilmesPopulares.showMedia(filmesList);
 
                         } else {
                             viewFilmesPopulares.mostraErro(response.message());
@@ -49,17 +49,17 @@ public class FilmesPopularesPresenter implements FilmeContrato.PresenterFilmesPo
                     }
 
                     @Override
-                    public void onFailure(@NotNull Call<FilmesPopularesResult> call, @NotNull Throwable t) {
+                    public void onFailure(@NotNull Call<MediaResult> call, @NotNull Throwable t) {
                         viewFilmesPopulares.mostraErro(t.getMessage());
                     }
                 });
     }
 
     @Override
-    public void obtemVideos(Filme filme) {
+    public void getVideos(Media media) {
             RetrofitConfig
                     .getInstanceTMDB()
-                    .ObterVideosFilmes(Integer.toString(filme.getIdFilme()), Keys.KEY_TMDB)
+                    .getMediaVideos(Integer.toString(media.getId()), Keys.KEY_TMDB)
                     .enqueue(new Callback<VideosResult>() {
                         @Override
                         public void onResponse(@NotNull Call<VideosResult> call, @NotNull Response<VideosResult> response) {
@@ -69,7 +69,7 @@ public class FilmesPopularesPresenter implements FilmeContrato.PresenterFilmesPo
                                         .responseToDomain(Objects
                                                 .requireNonNull(response.body()).getResultadosVideos());
 
-                                //Lista com Videos do filme selecionado
+                                //Lista com Videos do media selecionado
                                 List<String> videoKey = new ArrayList<>();
                                 for (int i = 0; i < videoList.size(); i++ )
                                     videoKey.add(videoList.get(i).getKeyVideo());

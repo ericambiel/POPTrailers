@@ -6,11 +6,17 @@ public class Media implements Serializable {
     private final int id;
     private final String originalTitle;
     private final String posterPath;
+    private final String relaseDate;
 
-    public Media(int id, String originalTitle, String posterPath) {
+    public Media(int id, String originalTitle, String posterPath, String relaseDate) {
         this.id = id;
         this.originalTitle = originalTitle;
         this.posterPath = posterPath;
+        this.relaseDate = relaseDate;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getOriginalTitle() {
@@ -21,7 +27,7 @@ public class Media implements Serializable {
         return posterPath;
     }
 
-    public int getId() {
-        return id;
+    public String getRelaseDate() {
+        return relaseDate;
     }
 }

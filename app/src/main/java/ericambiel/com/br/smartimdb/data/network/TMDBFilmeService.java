@@ -1,7 +1,7 @@
 package ericambiel.com.br.smartimdb.data.network;
 
-import ericambiel.com.br.smartimdb.data.network.responseTMDB.MediaResult;
-import ericambiel.com.br.smartimdb.data.network.responseTMDB.VideosResult;
+import ericambiel.com.br.smartimdb.data.network.responseCallTMDB.MediaResult;
+import ericambiel.com.br.smartimdb.data.network.responseCallTMDB.VideosResult;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -23,7 +23,7 @@ public interface TMDBFilmeService {
      * @return List of discovered media videos.
      */
     @GET("movie/{movie_id}/videos")
-    Call<VideosResult> getMediaVideos(@Path("movie_id") String movieId,
+    Call<VideosResult> getMediaVideos(@Path("movie_id") int movieId,
                                       @Query("api_key") String apiKey);
 
     /**
@@ -46,5 +46,6 @@ public interface TMDBFilmeService {
                                          @Query("release_date.gte") String releaseDataGte,
                                          @Query("release_date.lte") String releaseDataLte,
                                          @Query("with_release_type") String withReleaseType,
-                                         @Query("include_adult") boolean includeAdult);
+                                         @Query("include_adult") boolean includeAdult,
+                                         @Query("sort_by") String sortBy);
 }

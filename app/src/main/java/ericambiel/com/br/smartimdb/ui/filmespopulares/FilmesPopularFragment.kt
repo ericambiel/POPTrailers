@@ -14,50 +14,51 @@ import ericambiel.com.br.smartimdb.ui.util.CommonMediaAdapter
 import ericambiel.com.br.smartimdb.ui.youtubeplayer.YoutubeFragment
 import java.io.Serializable
 
-class FilmesPopularesFragment :
+class FilmesPopularFragment :
         Fragment(),
-        FilmePopularesContrato.ViewFilmesPopulares,
+        FilmesPopularesContrato.View,
         CommonMediaAdapter.ItemMediaClickListener {
-    private lateinit var filmesAdapter: CommonMediaAdapter
-    private lateinit var presenterFilmesPopulares: FilmesPopularesPresenter
+    private lateinit var adapter: CommonMediaAdapter
+    private lateinit var presenter: FilmesPopularesPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenterFilmesPopulares = FilmesPopularesPresenter(this)
-        presenterFilmesPopulares.getMedia()
-        configuraAdapter()
+        presenter = FilmesPopularesPresenter(this)
+        presenter.getMedia()
+
+        setupAdapter()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_videos_populares, container, false)
+        return inflater.inflate(R.layout.fragment_media, container, false)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenterFilmesPopulares.destruirView()
+        presenter.destruirView()
     }
 
-    override fun showMedia(mediaList: MutableList<Media>?) {
-        filmesAdapter.setFilmes(mediaList)
-    }
-
-    override fun mostraErro(erro: String) {
-        Toast.makeText(context, "Erro: $erro", Toast.LENGTH_LONG).show()
-    }
-
-    override fun onClickItemFilme(media: Media) {
-        presenterFilmesPopulares.getVideos(media)
-    }
-
-    private fun configuraAdapter() {
-        val recyclerView: RecyclerView? = activity?.findViewById(R.id.recycler_videos)
-        filmesAdapter = CommonMediaAdapter(this)
+    override fun setupAdapter() {
+        val recyclerView: RecyclerView? = activity?.findViewById(R.id.recycler_media)
+        adapter = CommonMediaAdapter(this)
         //Constroi LayoutManager
         val gridLayoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 2)
         //Seta LayoutManager
         recyclerView?.layoutManager = gridLayoutManager
         //Seta Adapter
-        recyclerView?.adapter = filmesAdapter
+        recyclerView?.adapter = adapter
+    }
+
+    override fun showMedia(mediaList: MutableList<Media>?) {
+        adapter.setMedia(mediaList)
+    }
+
+    override fun showErrorToast(erro: String?) {
+        Toast.makeText(context, "Erro: $erro", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onClickItemMedia(media: Media) {
+        presenter.getVideos(media)
     }
 
     override fun iniciaYoutubePlayer(keyVideoList: List<String>) {
@@ -67,8 +68,8 @@ class FilmesPopularesFragment :
         youtubePlayer.arguments = bundle
         activity?.supportFragmentManager
                 ?.beginTransaction()
-                ?.add(R.id.fl_filmes_populares, youtubePlayer)
-                ?.addToBackStack(YoutubeFragment.getTag())
+                ?.add(R.id.fl_media, youtubePlayer)
+                ?.addToBackStack(TAG)
                 ?.commit()
     }
 

@@ -47,7 +47,7 @@ public class CommonMediaAdapter extends RecyclerView.Adapter<CommonMediaHolder> 
         return (mediaList != null && mediaList.size() > 0) ? mediaList.size() : 0;
     }
 
-    public void setFilmes(List<Media> mediaList){
+    public void setMedia(List<Media> mediaList){
         this.mediaList = mediaList;
         notifyDataSetChanged(); //Faz o binding de cada item pra cada posição e exibi ao usuário
     }
@@ -56,6 +56,6 @@ public class CommonMediaAdapter extends RecyclerView.Adapter<CommonMediaHolder> 
      * Interface que implementara o click em um filme
      */
     public interface ItemMediaClickListener {
-        void onClickItemFilme(Media media);
+        void onClickItemMedia(Media media);
     }
 }

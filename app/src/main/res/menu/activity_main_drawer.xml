@@ -6,6 +6,9 @@
             android:icon="@drawable/ic_menu_videos_populares_24dp"
             android:title="@string/item_filmes_populares" />
         <item
+            android:id="@+id/nav_playing_now"
+            android:title="@string/item_playing_now" />
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_domain_black_24dp"
             android:title="@string/item_sobre" />

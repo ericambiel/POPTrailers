@@ -29,6 +29,17 @@
             android:padding="16dp"
             android:textColor="@android:color/black"
             tools:text="Titulo do Filme" />
+
+        <TextView
+            android:id="@+id/text_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_media_title"
+            android:layout_centerHorizontal="true"
+            android:padding="16dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            tools:text="Data de Lançamento" />
     </RelativeLayout>
 
 

@@ -16,7 +16,7 @@ import ericambiel.com.br.smartimdb.domain.Media;
 //Classe contem conteudo do RV
 class CommonMediaHolder extends RecyclerView.ViewHolder{
 
-    private AppCompatTextView textTituloFilme;
+    private AppCompatTextView textMediaTitle, textReleaseDate;
     private AppCompatImageView imagePoster;
     private Media media;
 
@@ -24,15 +24,16 @@ class CommonMediaHolder extends RecyclerView.ViewHolder{
                       final CommonMediaAdapter.ItemMediaClickListener itemMediaClickListener) {
         super(itemView);
 
-        textTituloFilme = itemView.findViewById(R.id.text_media_title);
         imagePoster = itemView.findViewById(R.id.image_media_poster);
+        textMediaTitle = itemView.findViewById(R.id.text_media_title);
+        textReleaseDate = itemView.findViewById(R.id.text_release_date);
 
         //Dispara esse metodo a cada click do media escolhido
         itemView.setOnClickListener(v -> {
             //Se estiver instânciado no Adapter
             if (itemMediaClickListener != null) {
                 //Devolve media clicado
-                itemMediaClickListener.onClickItemFilme(media);
+                itemMediaClickListener.onClickItemMedia(media);
             }
         });
     }
@@ -40,9 +41,11 @@ class CommonMediaHolder extends RecyclerView.ViewHolder{
     void bind(Media media){
         this.media = media;
 
-        textTituloFilme.setText(media.getOriginalTitle());
-
+        textMediaTitle.setText(media.getOriginalTitle());
+        textReleaseDate.setText(media.getRelaseDate());
         //Baixa a imagem e mostra em um componente imageView
-        Picasso.get().load("https://image.tmdb.org/t/p/w342/" + media.getPosterPath()).into(imagePoster);
+        Picasso.get()
+                .load("https://image.tmdb.org/t/p/w342/" + media.getPosterPath())
+                .into(imagePoster);
     }
 }

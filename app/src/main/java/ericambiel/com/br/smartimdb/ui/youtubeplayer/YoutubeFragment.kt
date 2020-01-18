@@ -58,7 +58,7 @@ class YoutubeFragment : Fragment() {
         mYouTubePlayerSupportFragmentX.initialize(Keys.KEY_YOUTUBE, mOnInitializerListerner)
 
         // Inicia transação entre Activity e Fragment
-        transaction.add(R.id.fl_filmes_populares, mYouTubePlayerSupportFragmentX).commit()
+        transaction.add(R.id.fl_media, mYouTubePlayerSupportFragmentX).commit()
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_youtube, container, false)
@@ -87,10 +87,6 @@ class YoutubeFragment : Fragment() {
 
     //Constantes estáticas
     companion object {
-        private const val TAG = "YOUTUBE_PLAYER"
-
-        fun getTag(): String{
-            return TAG
-        }
+        const val TAG = "YOUTUBE_PLAYER"
     }
 }

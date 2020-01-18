@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.data.network.responseTMDB;
+package ericambiel.com.br.smartimdb.data.network.responseCallTMDB;
 
 import com.squareup.moshi.Json;
 
@@ -38,7 +38,7 @@ public class MediaResult {
         return pagina;
     }
 
-    public List<MediaResponse> getResultadosFilmes() {
+    public List<MediaResponse> getMediaResult() {
         return resultadosFilmes;
     }
 

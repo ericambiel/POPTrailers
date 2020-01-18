@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.data.network.responseTMDB;
+package ericambiel.com.br.smartimdb.data.network.responseCallTMDB;
 
 import com.squareup.moshi.Json;
 

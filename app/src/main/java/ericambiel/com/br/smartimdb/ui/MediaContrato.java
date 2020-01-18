@@ -14,21 +14,26 @@ public interface MediaContrato {
      */
     interface View {
         /**
-         * Exibe player do YouTube em novo Fragmento
-         * @param keyVideoList lista de videos a serem executados
+         * Confgura adapter e inicializa ele em um RV
          */
-        void iniciaYoutubePlayer(List<String> keyVideoList);
-
-        /**
-         * Exibe erro caso haja problemas de comunicação entre app e endpoints TMDB.
-         */
-        void mostraErro(String erro);
+        void setupAdapter();
 
         /**
          * Comtem lista de filmes populares a serem exibidos.
          * @param mediaList lista com filmes a serem exibidos.
          */
         void showMedia(List<Media> mediaList);
+
+        /**
+         * Exibe erro caso haja problemas de comunicação entre app e endpoints TMDB.
+         */
+        void showErrorToast(String erro);
+
+        /**
+         * Exibe player do YouTube em novo Fragmento
+         * @param keyVideoList lista de videos a serem executados
+         */
+        void iniciaYoutubePlayer(List<String> keyVideoList);
     }
 
     /**
@@ -37,9 +42,9 @@ public interface MediaContrato {
      */
     interface Presenter{
         /**
-         * Evita que um presenter fique orfão de uma View.
+         * Get medias (movies, series, shows, etc) from API
          */
-        void destruirView();
+        void getMedia();
 
         /**
          * Get videos (trailes and teasers) from API
@@ -47,8 +52,8 @@ public interface MediaContrato {
         void getVideos(Media media);
 
         /**
-         * Get medias (movies, series, shows, etc) from API
+         * Evita que um presenter fique orfão de uma View.
          */
-        void getMedia();
+        void destruirView();
     }
 }

@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         //Instanciamos o AppBarConfiguration
         appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.nav_videos_populares,
+                R.id.nav_playing_now,
                 R.id.nav_about
         ), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)

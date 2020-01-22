@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.ui;
+package ericambiel.com.br.smartimdb.ui.common;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import ericambiel.com.br.smartimdb.domain.Media;
 /**
  * Interface responsavel por designar Presenters e Views as classes (MVP).
  */
-public interface MediaContrato {
+public interface CommonContrato {
     /**
      * Interface a ser extendia para todas as Views.
      * Comum a todas as Views.

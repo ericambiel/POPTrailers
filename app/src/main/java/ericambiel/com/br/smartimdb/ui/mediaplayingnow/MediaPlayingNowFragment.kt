@@ -1,7 +1,6 @@
 package ericambiel.com.br.smartimdb.ui.mediaplayingnow
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.domain.Media
-import ericambiel.com.br.smartimdb.ui.MediaContrato
-import ericambiel.com.br.smartimdb.ui.util.CommonMediaAdapter
-import ericambiel.com.br.smartimdb.ui.youtubeplayer.YoutubeFragment
+import ericambiel.com.br.smartimdb.ui.common.CommonContrato
+import ericambiel.com.br.smartimdb.ui.common.CommonMediaAdapter
+import ericambiel.com.br.smartimdb.ui.util.youtubeplayer.YoutubeFragment
+import java.io.Serializable
 
 class MediaPlayingNowFragment :
         Fragment(),
-        MediaContrato.View,
+        CommonContrato.View,
         CommonMediaAdapter.ItemMediaClickListener {
     private lateinit var adapter: CommonMediaAdapter
     private lateinit var presenter: MediaPlayingNowPresenter
@@ -65,7 +65,7 @@ class MediaPlayingNowFragment :
     override fun iniciaYoutubePlayer(keyVideoList: List<String>) {
         val youtubePlayer: Fragment = YoutubeFragment()
         val bundle = Bundle()
-        bundle.putParcelable("keyVideo", keyVideoList as Parcelable)
+        bundle.putSerializable("keyVideo", keyVideoList as Serializable)
         youtubePlayer.arguments = bundle
         activity?.supportFragmentManager
                 ?.beginTransaction()

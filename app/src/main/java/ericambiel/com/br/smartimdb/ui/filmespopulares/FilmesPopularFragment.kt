@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.domain.Media
-import ericambiel.com.br.smartimdb.ui.util.CommonMediaAdapter
-import ericambiel.com.br.smartimdb.ui.youtubeplayer.YoutubeFragment
+import ericambiel.com.br.smartimdb.ui.common.CommonMediaAdapter
+import ericambiel.com.br.smartimdb.ui.util.youtubeplayer.YoutubeFragment
 import java.io.Serializable
 
 class FilmesPopularFragment :

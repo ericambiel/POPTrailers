@@ -1,13 +1,13 @@
 package ericambiel.com.br.smartimdb.ui.mediaplayingnow
 
-import ericambiel.com.br.smartimdb.ui.MediaContrato
+import ericambiel.com.br.smartimdb.ui.common.CommonContrato
 
 interface MediaPlayingNowContrato{
-    interface View : MediaContrato.View{
+    interface View : CommonContrato.View{
         //TODO
     }
 
-    interface Presenter : MediaContrato.Presenter{
+    interface Presenter : CommonContrato.Presenter{
         //TODO
     }
 }

@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.ui.youtubeplayer
+package ericambiel.com.br.smartimdb.ui.util.youtubeplayer
 
 import android.os.Bundle
 import android.util.Log

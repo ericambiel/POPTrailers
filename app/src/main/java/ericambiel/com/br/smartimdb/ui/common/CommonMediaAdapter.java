@@ -1,4 +1,4 @@
-package ericambiel.com.br.smartimdb.ui.util;
+package ericambiel.com.br.smartimdb.ui.common;
 
 import android.view.LayoutInflater;
 import android.view.View;

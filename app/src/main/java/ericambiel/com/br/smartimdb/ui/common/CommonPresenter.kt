@@ -5,19 +5,18 @@ import ericambiel.com.br.smartimdb.data.mapper.VideosFilmeMapper.Companion.respo
 import ericambiel.com.br.smartimdb.data.network.RetrofitConfig
 import ericambiel.com.br.smartimdb.data.network.responseCallTMDB.VideosResult
 import ericambiel.com.br.smartimdb.domain.Media
+import ericambiel.com.br.smartimdb.ui.MainContrato
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-
-object CommonVideos {
-    @JvmStatic
-    fun getVideos(media: Media, view: CommonContrato.View) {
+object CommonPresenter: CommonContrato.Presenter {
+    override fun getVideos(media: Media?, view: MainContrato.View) {
         RetrofitConfig
             .getInstanceTMDB()
             .getMediaVideos(
-                    media.id,
+                    media!!.id,
                     Keys.KEY_TMDB)
             .enqueue(object : Callback<VideosResult?> {
                 override fun onResponse(call: Call<VideosResult?>,

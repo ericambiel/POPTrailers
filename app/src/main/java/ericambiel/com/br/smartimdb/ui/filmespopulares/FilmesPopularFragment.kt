@@ -49,7 +49,7 @@ class FilmesPopularFragment :
         recyclerView?.adapter = adapter
     }
 
-    override fun showMedia(mediaList: MutableList<Media>?) {
+    override fun showMedia(mediaList: List<Media?>?) {
         adapter.setMedia(mediaList)
     }
 
@@ -61,7 +61,7 @@ class FilmesPopularFragment :
         presenter.getVideos(media)
     }
 
-    override fun iniciaYoutubePlayer(keyVideoList: List<String>) {
+    override fun iniciaYoutubePlayer(keyVideoList: List<String?>?) {
         val youtubePlayer: Fragment = YoutubeFragment()
         val bundle = Bundle()
         bundle.putSerializable("keyVideo", keyVideoList as Serializable)

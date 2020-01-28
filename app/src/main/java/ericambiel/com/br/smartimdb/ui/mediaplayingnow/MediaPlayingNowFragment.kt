@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.domain.Media
-import ericambiel.com.br.smartimdb.ui.common.CommonContrato
+import ericambiel.com.br.smartimdb.ui.MainContrato
 import ericambiel.com.br.smartimdb.ui.common.CommonMediaAdapter
 import ericambiel.com.br.smartimdb.ui.util.youtubeplayer.YoutubeFragment
 import java.io.Serializable
 
 class MediaPlayingNowFragment :
         Fragment(),
-        CommonContrato.View,
+        MainContrato.View,
         CommonMediaAdapter.ItemMediaClickListener {
     private lateinit var adapter: CommonMediaAdapter
     private lateinit var presenter: MediaPlayingNowPresenter
@@ -50,11 +50,11 @@ class MediaPlayingNowFragment :
         recyclerView?.adapter = adapter
     }
 
-    override fun showMedia(mediaList: MutableList<Media>?) {
+    override fun showMedia(mediaList: List<Media?>?) {
         adapter.setMedia(mediaList)
     }
 
-    override fun showErrorToast(erro: String) {
+    override fun showErrorToast(erro: String?) {
         Toast.makeText(context, "Erro: $erro", Toast.LENGTH_LONG).show()
     }
 
@@ -62,7 +62,7 @@ class MediaPlayingNowFragment :
         presenter.getVideos(media)
     }
 
-    override fun iniciaYoutubePlayer(keyVideoList: List<String>) {
+    override fun iniciaYoutubePlayer(keyVideoList: List<String?>?) {
         val youtubePlayer: Fragment = YoutubeFragment()
         val bundle = Bundle()
         bundle.putSerializable("keyVideo", keyVideoList as Serializable)

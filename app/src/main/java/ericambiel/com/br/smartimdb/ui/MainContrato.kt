@@ -1,13 +1,11 @@
-package ericambiel.com.br.smartimdb.ui.common;
+package ericambiel.com.br.smartimdb.ui
 
-import java.util.List;
-
-import ericambiel.com.br.smartimdb.domain.Media;
+import ericambiel.com.br.smartimdb.domain.Media
 
 /**
  * Interface responsavel por designar Presenters e Views as classes (MVP).
  */
-public interface CommonContrato {
+interface MainContrato {
     /**
      * Interface a ser extendia para todas as Views.
      * Comum a todas as Views.
@@ -16,44 +14,44 @@ public interface CommonContrato {
         /**
          * Confgura adapter e inicializa ele em um RV
          */
-        void setupAdapter();
+        fun setupAdapter()
 
         /**
          * Comtem lista de filmes populares a serem exibidos.
          * @param mediaList lista com filmes a serem exibidos.
          */
-        void showMedia(List<Media> mediaList);
+        fun showMedia(mediaList: List<Media?>?)
 
         /**
          * Exibe erro caso haja problemas de comunicação entre app e endpoints TMDB.
          */
-        void showErrorToast(String erro);
+        fun showErrorToast(erro: String?)
 
         /**
          * Exibe player do YouTube em novo Fragmento
          * @param keyVideoList lista de videos a serem executados
          */
-        void iniciaYoutubePlayer(List<String> keyVideoList);
+        fun iniciaYoutubePlayer(keyVideoList: List<String?>?)
     }
 
     /**
      * Interface a ser extendia para todas os Presenters.
      * Comum a todos os Presenters.
      */
-    interface Presenter{
+    interface Presenter {
         /**
          * Get medias (movies, series, shows, etc) from API
          */
-        void getMedia();
+        fun getMedia()
 
         /**
          * Get videos (trailes and teasers) from API
          */
-        void getVideos(Media media);
+        fun getVideos(media: Media?)
 
         /**
          * Evita que um presenter fique orfão de uma View.
          */
-        void destruirView();
+        fun destruirView()
     }
 }

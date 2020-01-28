@@ -11,7 +11,7 @@ import ericambiel.com.br.smartimdb.data.mapper.MediaMapper;
 import ericambiel.com.br.smartimdb.data.network.RetrofitConfig;
 import ericambiel.com.br.smartimdb.data.network.responseCallTMDB.MediaResult;
 import ericambiel.com.br.smartimdb.domain.Media;
-import ericambiel.com.br.smartimdb.ui.common.CommonVideos;
+import ericambiel.com.br.smartimdb.ui.common.CommonPresenter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,42 +58,7 @@ public class FilmesPopularesPresenter
 
     @Override
     public void getVideos(Media media) {
-        CommonVideos.getVideos(media, view);
-
-//        RetrofitConfig
-//            .getInstanceTMDB()
-//            .getMediaVideos(
-//                    media.getId(),
-//                    Keys.KEY_TMDB)
-//            .enqueue(new Callback<VideosResult>() {
-//                @Override
-//                public void onResponse(@NotNull Call<VideosResult> call,
-//                                       @NotNull Response<VideosResult> response) {
-//                    // status code >= 200 e <300
-//                    if (response.isSuccessful()) {
-//                        final List<Video> videoList = VideosFilmeMapper
-//                                .responseToDomain(Objects
-//                                        .requireNonNull(response.body())
-//                                        .getResultadosVideos());
-//
-//                        //Lista com Videos da mídia selecionada
-//                        List<String> videoKey = new ArrayList<>();
-//                        for (int i = 0; i < videoList.size(); i++ )
-//                            videoKey.add(videoList.get(i).getKeyVideo());
-//
-//                        //Desacopla camada de domínio da camada de rede
-//                        view.iniciaYoutubePlayer(videoKey);
-//                    } else {
-//                        view.showErrorToast(response.message());
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(@NotNull Call<VideosResult> call,
-//                                      @NotNull Throwable t) {
-//                    view.showErrorToast(t.getMessage());
-//                }
-//            });
+        CommonPresenter.INSTANCE.getVideos(media, view);
     }
 
     @Override

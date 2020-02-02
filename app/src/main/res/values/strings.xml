@@ -17,8 +17,8 @@
     <string name="tx_conected_as">Conectado como:</string>
 
     <!--Itens do Menu-->
+    <string name="item_playing_now">Cinema / OnDemand</string>
     <string name="item_filmes_populares">Videos Populares</string>
-    <string name="item_playing_now">Cinemas/OnDemand</string>
     <string name="item_ferramentas">Tools</string>
     <string name="item_compartilhar">Compartilhar</string>
     <string name="item_sobre">Sobre</string>

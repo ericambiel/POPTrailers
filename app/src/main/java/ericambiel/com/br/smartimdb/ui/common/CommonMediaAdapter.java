@@ -30,7 +30,10 @@ public class CommonMediaAdapter extends RecyclerView.Adapter<CommonMediaHolder> 
     public CommonMediaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Ira inflar nosso rv dentro de um ViewGroup, no caso a que esta chamando essa classe, 2° paramentro é onde
         // vai se encaixar no caso em seu parent
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_media_item, parent, false);
+        View view = LayoutInflater.from(
+                parent.getContext()).inflate(R.layout.rv_media_item,
+                parent,
+                false);
 
         return new CommonMediaHolder(view, itemMediaClickListener);
     }

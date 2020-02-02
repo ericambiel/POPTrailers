@@ -22,16 +22,17 @@ class MediaPlayingNowFragment :
     private lateinit var adapter: CommonMediaAdapter
     private lateinit var presenter: MediaPlayingNowPresenter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         presenter = MediaPlayingNowPresenter(this)
-        presenter.getMedia()
 
-        setupAdapter()
+        return inflater.inflate(R.layout.fragment_media, container, false)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_media, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupAdapter()
+        presenter.getMedia()
     }
 
     override fun onDestroy() {
@@ -40,14 +41,19 @@ class MediaPlayingNowFragment :
     }
 
     override fun setupAdapter() {
-        val recyclerView: RecyclerView? = activity?.findViewById(R.id.recycler_media)
-        adapter = CommonMediaAdapter(this)
-        //Constroi LayoutManager
-        val gridLayoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 2)
-        //Seta LayoutManager
-        recyclerView?.layoutManager = gridLayoutManager
-        //Seta Adapter
-        recyclerView?.adapter = adapter
+        Thread(Runnable { //Evita que RV não seja mostrado entre trocas de Fragmento
+            activity?.runOnUiThread {
+                val recyclerView: RecyclerView? = activity?.findViewById(R.id.recycler_media)
+                adapter = CommonMediaAdapter(this)
+                //Constroi LayoutManager
+                val gridLayoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 2)
+                //Seta LayoutManager
+                recyclerView?.layoutManager = gridLayoutManager
+                //Seta Adapter
+                recyclerView?.adapter = adapter
+            }
+        }).start()
+
     }
 
     override fun showMedia(mediaList: List<Media?>?) {

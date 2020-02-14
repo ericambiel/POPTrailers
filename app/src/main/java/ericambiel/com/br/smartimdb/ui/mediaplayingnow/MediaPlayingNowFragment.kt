@@ -1,11 +1,15 @@
 package ericambiel.com.br.smartimdb.ui.mediaplayingnow
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.SavedStateViewModelFactory
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ericambiel.com.br.smartimdb.R
@@ -19,25 +23,34 @@ class MediaPlayingNowFragment :
         Fragment(),
         MainContrato.View,
         CommonMediaAdapter.ItemMediaClickListener {
+
+    companion object {
+        const val TAG = "PLAYING_NOW"
+    //    fun newInstance() = this
+    }
+
     private lateinit var adapter: CommonMediaAdapter
-    private lateinit var presenter: MediaPlayingNowPresenter
+    //private lateinit var presenter: MediaPlayingNowPresenter
+
+    private val viewModel: MediaPlayingNowViewModel by viewModels( factoryProducer = {
+        SavedStateViewModelFactory(Application(),this)
+    })
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        presenter = MediaPlayingNowPresenter(this)
-
+        //presenter = MediaPlayingNowPresenter(this)
         return inflater.inflate(R.layout.fragment_media, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupAdapter()
-        presenter.getMedia()
-    }
+        viewModel.mediaList.observe(viewLifecycleOwner){
+            showMedia(viewModel.mediaList.value)
+        }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.destruirView()
+        setupAdapter()
+        viewModel.loadMedia()
+        //presenter.getMedia()
     }
 
     override fun setupAdapter() {
@@ -65,7 +78,7 @@ class MediaPlayingNowFragment :
     }
 
     override fun onClickItemMedia(media: Media) {
-        presenter.getVideos(media)
+        //presenter.getVideos(media)
     }
 
     override fun iniciaYoutubePlayer(keyVideoList: List<String?>?) {
@@ -78,9 +91,5 @@ class MediaPlayingNowFragment :
                 ?.add(R.id.fl_media, youtubePlayer)
                 ?.addToBackStack(TAG)
                 ?.commit()
-    }
-
-    companion object {
-        const val TAG = "PLAYING_NOW"
     }
 }

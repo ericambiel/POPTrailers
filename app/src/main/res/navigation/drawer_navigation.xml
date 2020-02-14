@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_playing_now">
+
+    <fragment
+        android:id="@id/nav_playing_now"
+        android:name="ericambiel.com.br.smartimdb.ui.mediaplayingnow.MediaPlayingNowFragment"
+        android:label="@string/item_playing_now"
+        tools:layout="@layout/fragment_media"/>
+
+    <fragment
+        android:id="@id/nav_videos_populares"
+        android:name="ericambiel.com.br.smartimdb.ui.filmespopulares.FilmesPopularesFragment"
+        android:label="@string/item_filmes_populares"
+        tools:layout="@layout/fragment_media" />
+
+    <fragment
+        android:id="@id/nav_about"
+        android:name="ericambiel.com.br.smartimdb.ui.about.AboutFragment"
+        android:label="@string/item_sobre"
+        tools:layout="@layout/fragment_about" />
+
+</navigation>

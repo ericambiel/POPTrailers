@@ -1,7 +1,7 @@
 package ericambiel.com.br.smartimdb.data.mapper
 
-import ericambiel.com.br.smartimdb.data.model.Video
-import ericambiel.com.br.smartimdb.data.network.responseTMDB.VideoResponse
+import ericambiel.com.br.smartimdb.data.network.responseCallTMDB.VideoResponse
+import ericambiel.com.br.smartimdb.domain.Video
 import java.util.*
 
 

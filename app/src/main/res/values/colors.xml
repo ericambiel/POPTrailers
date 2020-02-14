@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="primaryColor">#7986cb</color>
+    <color name="primaryLightColor">#aab6fe</color>
+    <color name="primaryDarkColor">#49599a</color>
+    <color name="primaryTextColor">#000000</color>
+
+    <color name="secondaryColor">#512da8</color>
+    <color name="secondaryLightColor">#8559da</color>
+    <color name="secondaryDarkColor">#140078</color>
+    <color name="secondaryTextColor">#ffffff</color>
+
+    <color name="linkColor">#00A6FF</color>
+    <color name="navButtonColor">#77D353</color>
+    <color name="viewLineColor">#DDDDDD</color>
+
+    <color name="navItemSelectedColor">#F1F1F1</color>
+
+    <color name="lightGreenBoxColor">#BB77D353</color>
+    <color name="orangeInfoColor">#FF9052</color>
 </resources>

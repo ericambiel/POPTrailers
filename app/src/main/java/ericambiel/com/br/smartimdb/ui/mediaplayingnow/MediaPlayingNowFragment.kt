@@ -16,6 +16,7 @@ import ericambiel.com.br.smartimdb.R
 import ericambiel.com.br.smartimdb.domain.Media
 import ericambiel.com.br.smartimdb.ui.MainContrato
 import ericambiel.com.br.smartimdb.ui.common.CommonMediaAdapter
+import ericambiel.com.br.smartimdb.ui.common.CommonViewModel
 import ericambiel.com.br.smartimdb.ui.util.youtubeplayer.YoutubeFragment
 import java.io.Serializable
 
@@ -30,14 +31,16 @@ class MediaPlayingNowFragment :
     }
 
     private lateinit var adapter: CommonMediaAdapter
-    //private lateinit var presenter: MediaPlayingNowPresenter
 
     private val viewModel: MediaPlayingNowViewModel by viewModels( factoryProducer = {
         SavedStateViewModelFactory(Application(),this)
     })
 
+    private val commonViewModel: CommonViewModel by viewModels( factoryProducer = {
+        SavedStateViewModelFactory(Application(),this)
+    })
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        //presenter = MediaPlayingNowPresenter(this)
         return inflater.inflate(R.layout.fragment_media, container, false)
     }
 
@@ -48,9 +51,20 @@ class MediaPlayingNowFragment :
             showMedia(viewModel.mediaList.value)
         }
 
+        viewModel.message.observe(viewLifecycleOwner) {
+            showErrorToast(viewModel.message.value)
+        }
+
+        commonViewModel.keyVideoList.observe(viewLifecycleOwner) {
+            iniciaYoutubePlayer(commonViewModel.keyVideoList.value)
+        }
+
+        commonViewModel.keyVideoList.observe(viewLifecycleOwner) {
+            showErrorToast(commonViewModel.message.value)
+        }
+
         setupAdapter()
         viewModel.loadMedia()
-        //presenter.getMedia()
     }
 
     override fun setupAdapter() {
@@ -78,7 +92,7 @@ class MediaPlayingNowFragment :
     }
 
     override fun onClickItemMedia(media: Media) {
-        //presenter.getVideos(media)
+        commonViewModel.loadVideos(media)
     }
 
     override fun iniciaYoutubePlayer(keyVideoList: List<String?>?) {

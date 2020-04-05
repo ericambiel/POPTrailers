@@ -1,5 +1,5 @@
-# smartIMDB
-Buscador de filmes no banco TMDB/IMDB
+# POPTrailers
+Consome RestAPI TMDB
 
-* Mostrando os filmes mais procurados (TMDB)
-* Exibindo trailler do filme ao clicar no post
+* Exibe trailers filmes mais procurados (TMDB)
+* Exibe trailers filmes lançamentos (Cinema/OnDemand)

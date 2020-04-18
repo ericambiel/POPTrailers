@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@id/nav_playing_now"
-        android:name="ericambiel.com.br.smartimdb.ui.mediaplayingnow.MediaPlayingNowFragment"
+        android:name="ericambiel.com.br.poptrailers.ui.mediaplayingnow.MediaPlayingNowFragment"
         android:label="@string/item_playing_now"
         tools:layout="@layout/fragment_media"/>
 
     <fragment
         android:id="@id/nav_videos_populares"
-        android:name="ericambiel.com.br.smartimdb.ui.filmespopulares.FilmesPopularesFragment"
+        android:name="ericambiel.com.br.poptrailers.ui.filmespopulares.FilmesPopularesFragment"
         android:label="@string/item_filmes_populares"
         tools:layout="@layout/fragment_media" />
 
     <fragment
         android:id="@id/nav_about"
-        android:name="ericambiel.com.br.smartimdb.ui.about.AboutFragment"
+        android:name="ericambiel.com.br.poptrailers.ui.about.AboutFragment"
         android:label="@string/item_sobre"
         tools:layout="@layout/fragment_about" />
 
